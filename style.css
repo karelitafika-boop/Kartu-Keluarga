@@ -1,10 +1,18 @@
-.navbar{
-    background:#1e5799;
+/* .navbar {
+    background:#8bc1ff !important;
     color:white;
     display:flex;
     justify-content:space-between;
     padding:15px 40px;
-}
+} */
+
+/* nav.navbar {
+    background: #08eaff !important;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+} */
 
 .nav-menu a{
     color:white;
