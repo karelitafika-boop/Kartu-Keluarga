@@ -41,6 +41,9 @@ $jml = mysqli_fetch_assoc(mysqli_query($koneksi,"SELECT COUNT(*) as total FROM k
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="logout.php">Logout</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" href="login_db.php">admin plug</a>
+        </li>
       </ul>
     </div>
   </div>
