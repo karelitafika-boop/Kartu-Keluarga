@@ -63,25 +63,50 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 </div>
 </div>
 
-<section class="container text-center pt-5 pb-5">
-  <h3 class="fw-bold mb-4" style="color:dodgerblue;">Data Kartu Keluarga</h3>
+<section class="container-fluid text-center pt-5 pb-5" style="background-color:lightskyblue">
+  <h3 class="fw-bold mb-4" style="color:white;">Data Kartu Keluarga</h3>
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
-    
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
-        <h5>Total Data Kartu Keluarga</h5>
-        <h2><?= $jml['total']; ?></h2>
+        <h5 style="color:darkblue;">Total Data Kartu Keluarga</h5>
+        <h2 style="color:darkblue;"><?= $jml['total']; ?></h2>
       </div>
     </div>
     
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
-        <h5>Total Anggota Keluarga</h5>
-        <h2><?= $jml_anggota['total']; ?></h2>
+        <h5 style="color:darkblue;">Total Anggota Keluarga</h5>
+        <h2 style="color:darkblue;"><?= $jml_anggota['total']; ?></h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid text-center pt-5 pb-5" style="background-color:lightskyblue">
+  <h3 class="fw-bold mb-4" style="color:white;">Tahap Pendaftaran</h3>
+
+  <div class="d-flex gap-3 justify-content-center flex-wrap">
+    <div class="card text-center shadow-sm" style="width: 300px;">
+      <div class="card-body">
+        <h5 style="color:darkblue;">Data Kepala Keluarga</h5>
+        <p>Inputkan No.Kartu Keluarga, nama kepala keluarga, dan alamat pada form.</p>
       </div>
     </div>
 
+    <div class="card text-center shadow-sm" style="width: 300px;">
+      <div class="card-body">
+        <h5 style="color:darkblue;">Data Anggota</h5>
+        <p>Input data anggota keluarga berupa NIK, nama, jenis kelamin, dan hubungan. Anggota selanjutnya ditambahkan dengan klik tombol tambah anggota.</p>
+      </div>
+    </div>
+
+    <div class="card text-center shadow-sm" style="width: 300px;">
+      <div class="card-body">
+        <h5 style="color:darkblue;">Simpan Data</h5>
+        <p>Cek kembali data yang sudah diisi, kemudian klik simpan.</p>
+      </div>
+    </div>
   </div>
 </section>
 
