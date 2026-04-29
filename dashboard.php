@@ -17,64 +17,44 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
-
-<!-- NAVBAR -->
+  
 <nav class="navbar navbar-expand-lg" style="background-color:navy;">
   <div class="container-fluid">
-
-    <a class="navbar-brand fw-bold" href="#">
-      <span class="text-light">KK </span>
-      <span class="text-info">Digital</span>
-    </a>
-
+    <a class="navbar-brand fw-bold" href="#"><span class="text-light">KK </span><span class="text-info">Digital</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
-
       <ul class="navbar-nav">
-
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="dashboard.php">Dashboard</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="form.php">Input Data</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="tampil_kk.php">Tampil KK Saya</a>
         </li>
-
-        <!-- MENU ADMIN -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light fw-bold" href="#" data-bs-toggle="dropdown">
-            Admin
-          </a>
+          <a class="nav-link dropdown-toggle text-light fw-bold" href="#" data-bs-toggle="dropdown">Admin</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="login_db.php">Login Admin</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="logout.php">Logout</a>
         </li>
-
       </ul>
-
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
+
 <div class="text-white text-center d-flex align-items-center justify-content-start"
      style="height: 700px; background: url(assets/keluarga.png) center/cover; padding-left: 100px;">
 
