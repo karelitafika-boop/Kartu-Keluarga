@@ -84,7 +84,7 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 </section>
 
 <section class="container-fluid text-center pt-5 pb-5" style="background-color:lightskyblue">
-  <h3 class="fw-bold mb-4" style="color:white;">Tahap Pendaftaran</h3>
+  <h3 class="fw-bold mb-4" style="color:white;">Tahap Pengajuan Pendaftaran Kartu Keluarga</h3>
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
     <div class="card text-center shadow-sm" style="width: 300px;">
