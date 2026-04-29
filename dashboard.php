@@ -40,12 +40,12 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="tampil_kk.php">Tampil KK Saya</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light fw-bold" href="#" data-bs-toggle="dropdown">Admin</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="login_db.php">Login Admin</a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link text-light fw-bold" href="logout.php">Logout</a>
         </li>
@@ -55,29 +55,40 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 </nav>
 
 
-<div class="text-white text-center d-flex align-items-center justify-content-start"
-     style="height: 700px; background: url(assets/keluarga.png) center/cover; padding-left: 100px;">
 
+    <a href="login_db.php" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0d6efd;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+">
+    ⚙
+</a>
+
+
+
+<div class="text-white text-center d-flex align-items-center justify-content-start" style="height: 700px; background: url(assets/keluarga.png) center/cover; padding-left: 100px;">
   <div style="background: rgba(1, 141, 255, 0.55); padding:20px; border-radius:10px; max-width: 550px;">
-
-    <h2 style="font-family:'Poppins'; font-size: 30px; font-weight:bold;">
-      Sistem Pendataan <br> Kartu Keluarga Digital
-    </h2>
-
-    <p style="font-family:'Poppins'; font-size: 15px; line-height: 1.7;">
-      Sistem Pendataan Kartu Keluarga Digital merupakan platform berbasis web
-      untuk mempermudah proses pendataan keluarga secara cepat dan praktis.
-    </p>
-
+    <h2 style="font-family:'Poppins'; font-size: 30px; font-weight:bold;">Sistem Pendataan <br> Kartu Keluarga Digital</h2>
+    <p style="font-family:'Poppins'; font-size: 15px; line-height: 1.7;">Sistem Pendataan Kartu Keluarga Digital merupakan platform berbasis web untuk mempermudah proses pendataan keluarga secara cepat dan praktis.</p>
     <a href="form.php" class="btn btn-light">Input Data</a>
-    <a href="tampil_kk.php" class="btn btn-info text-white">Tampil KK Saya</a>
-
+    <a href="tampil_kk.php" class="btn btn-light">Tampil KK Saya</a>
   </div>
 </div>
 
 <section class="container-fluid text-center pt-5 pb-5" style="background-color:lightskyblue">
   <h3 class="fw-bold mb-4" style="color:white;">Data Kartu Keluarga</h3>
-
   <div class="d-flex gap-3 justify-content-center flex-wrap">
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
@@ -85,7 +96,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
         <h2 style="color:darkblue;"><?= $jml['total']; ?></h2>
       </div>
     </div>
-    
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
         <h5 style="color:darkblue;">Total Anggota Keluarga</h5>
@@ -97,7 +107,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 
 <section class="container-fluid text-center pt-5 pb-5" style="background-color:lightskyblue">
   <h3 class="fw-bold mb-4" style="color:white;">Tahap Pengajuan Pendaftaran Kartu Keluarga</h3>
-
   <div class="d-flex gap-3 justify-content-center flex-wrap">
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
@@ -105,14 +114,12 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
         <p>Inputkan No.Kartu Keluarga, nama kepala keluarga, dan alamat pada form.</p>
       </div>
     </div>
-
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
         <h5 style="color:darkblue;">Data Anggota</h5>
         <p>Input data anggota keluarga berupa NIK, nama, jenis kelamin, dan hubungan. Anggota selanjutnya ditambahkan dengan klik tombol tambah anggota.</p>
       </div>
     </div>
-
     <div class="card text-center shadow-sm" style="width: 300px;">
       <div class="card-body">
         <h5 style="color:darkblue;">Simpan Data</h5>
@@ -121,5 +128,37 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     </div>
   </div>
 </section>
+
+<footer class="bg-dark text-white mt-0 p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><span class="text-light">KK </span><span class="text-info">Digital</span></h5>
+                    <p style="color: grey;">Sistem Pendataan Kartu Keluarga Digital merupakan platform berbasis web untuk mempermudah proses pendataan keluarga secara cepat dan praktis.</p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h5><b>Menu</b></h5>
+                    <p style="color: grey;">Dashboard</p>
+                    <p style="color: grey;">Input Data</p>
+                    <p style="color: grey;">Tampilan</p>
+                    <p style="color: grey;">Kontak</p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h5><b>Kontak</b></h5>
+                    <p style="color: grey;">Jl. Babarsari, Kec. Depok, Kab. Sleman, Daerah Istimewa Yogyakarta.</p>
+                    <p style="color: grey;">0821-3489-4509</p>
+                    <p style="color: grey;">keluargadigital@gmail.com</p>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <p class="text-center">&copy; 2026 KartuKeluarga Digital, All Rights Reserved.</p>
+        
+        </div>
+    </footer>
+
 </body>
 </html>

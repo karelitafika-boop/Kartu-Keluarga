@@ -50,33 +50,33 @@ if (!isset($_SESSION['login'])) {
   </div>
 </nav>
 
-<div class="content">
-    <h2>Input Data Kartu Keluarga</h2>
-    <form id="formKK" action="simpan.php" method="POST">
-        <h3>Data Kartu Keluarga</h3>
-        <input type="text" name="no_kk" placeholder="No KK" required>
-        <input type="text" name="nama_kepala_keluarga" placeholder="Nama Kepala Keluarga" required>
-        <textarea name="alamat" placeholder="Alamat" required></textarea>
-        <h3>Anggota Keluarga</h3>
-        <div id="anggota-area">
-            <div class="anggota-box">
-                <h4>Anggota 1</h4>
-                <input type="text" name="nik[]" placeholder="NIK" required>
-                <input type="text" name="nama[]" placeholder="Nama" required>
-                
-                <select name="jenis_kelamin[]" required>
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                </select>
-                
-                <input type="text" name="hubungan[]" placeholder="Hubungan" required>
-            </div>
-        </div>
-        
-        <button type="button" onclick="tambahAnggota()">+ Tambah Anggota</button>
-        <button type="button" onclick="popup()">Simpan</button>
-    </form>
+<div style="max-width:800px; margin:50px auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); font-family:'Poppins';">
+  <h2 style="text-align:center; margin-bottom:20px; color:darkblue; font-weight: bold;">Input Data Kartu Keluarga</h2>
+  <form id="formKK" action="simpan.php" method="POST">
+    <h3 style="margin-top:20px; font-weight: bold; font-size: 20px;">Data Kartu Keluarga</h3>
+    <input type="text" name="no_kk" placeholder="No KK" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+    <input type="text" name="nama_kepala_keluarga" placeholder="Nama Kepala Keluarga" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+    <textarea name="alamat" placeholder="Alamat" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;"></textarea>
+    <h3 style="margin-top:20px; font-weight: bold; font-size: 20px;">Anggota Keluarga</h3>
+    <div id="anggota-area">
+      <div style="background:#f9fbff; padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid #dbe7ff;">
+        <h4>Anggota 1</h4>
+        <input type="text" name="nik[]" placeholder="NIK" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+        <input type="text" name="nama[]" placeholder="Nama" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+        <select name="jenis_kelamin[]" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+          <option value="">Pilih Jenis Kelamin</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+        <input type="text" name="hubungan[]" placeholder="Hubungan" required style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc;">
+      </div>
+    </div>
+    
+    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+      <button type="button" onclick="tambahAnggota()" style="background:#6c757d; color:white; padding:10px 15px; border:none; border-radius:8px; cursor:pointer;">+ Tambah Anggota</button>
+      <button type="button" onclick="popup()" style="background:#007bff; color:white; padding:10px 15px; border:none; border-radius:8px; cursor:pointer;">Simpan</button>
+    </div>
+  </form>
 </div>
 
 <div id="popup" class="popup">
