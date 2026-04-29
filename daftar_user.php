@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h2>Daftar Akun User</h2>
+<h2>Buat Akun User</h2>
 
 <form action="simpan_user.php" method="POST">
     <label>Username</label><br>
@@ -17,7 +17,7 @@
     <button type="submit">Daftar</button>
 </form>
 
-<p>Sudah punya akun? <a href="login_users.php">Login di sini</a></p>
+<p>Sudah punya akun? <a href="login_users.php">Login</a></p>
 
 </body>
 </html>
