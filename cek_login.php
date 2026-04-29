@@ -1,19 +1,23 @@
 <?php
 session_start();
-include 'koneksi.php';
+include "koneksi.php";
 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$query = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+$query = mysqli_query($koneksi, "SELECT * FROM users 
+WHERE username='$username' 
+AND password='$password'
+AND role='admin'");
 
-$cek = mysqli_num_rows($query);
+$data = mysqli_fetch_assoc($query);
 
-if($cek > 0){
-    $_SESSION['username'] = $username;
-    $_SESSION['status'] = 'login';
-    header("location:dashboard_db.php");
+if ($data) {
+    $_SESSION['login'] = true;
+    $_SESSION['username'] = $data['username'];
+
+    header("Location: dashboard_db.php");
 } else {
-    header("location:login_db.php?pesan=gagal");
+    header("Location: login_db.php?pesan=gagal");
 }
 ?>

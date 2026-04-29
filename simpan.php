@@ -1,14 +1,22 @@
 <?php
+session_start();
 include "koneksi.php";
+
+if (!isset($_SESSION['login']) || $_SESSION['role'] != "user") {
+    header("Location: login_users.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
 
 $no = $_POST['no_kk'];
 $nama = $_POST['nama_kepala_keluarga'];
 $alamat = $_POST['alamat'];
 
 $simpanKK = mysqli_query($koneksi, "INSERT INTO kartu_keluarga 
-(no_kk, nama_kepala_keluarga, alamat)
+(user_id, no_kk, nama_kepala_keluarga, alamat)
 VALUES
-('$no', '$nama', '$alamat')");
+('$user_id', '$no', '$nama', '$alamat')");
 
 if (!$simpanKK) {
     die("Gagal simpan data KK: " . mysqli_error($koneksi));
@@ -34,4 +42,4 @@ for ($i = 0; $i < count($nik); $i++) {
 
 header("Location: landing.php?id=$id");
 exit;
-?>
+?>  
