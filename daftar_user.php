@@ -1,106 +1,200 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Daftar User - KK Digital</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Daftar User - KK Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #68789a, #05234b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        .register-card {
-            width: 100%;
-            max-width: 430px;
-            background: #ffffff;
-            border-radius: 22px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, #22d3ee55, transparent 35%),
+        radial-gradient(circle at bottom right, #6366f155, transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a, #111827);
+      color: white;
+      overflow: hidden;
+    }
 
-        .icon-box {
-            width: 70px;
-            height: 70px;
-            background: #0d6efd;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 32px;
-        }
-        
-        .form-control {
-            border-radius: 12px;
-            padding: 12px;
-        }
+    .register-card {
+      width: 720px;
+      padding: 34px;
+      border-radius: 28px;
+      background: rgba(15,23,42,.78);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    }
 
-        .btn-register {
-            border-radius: 12px;
-            padding: 12px;
-            font-weight: 600;
-        }
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
 
-        a {
-            text-decoration: none;
-        }
-    </style>
+    p {
+      text-align: center;
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      border-radius: 15px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      overflow: hidden;
+    }
+
+    .input-box i {
+      padding: 0 14px;
+      color: #38bdf8;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 12px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    .btn-register {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 16px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      box-shadow: 0 14px 35px rgba(14,165,233,.42);
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-3px);
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .bottom-text {
+      margin-top: 22px;
+      margin-bottom: 8px;
+    }
+
+    @media(max-width: 760px) {
+      .register-card {
+        width: 90%;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <div class="register-card">
 
-    <div class="icon-box">
-        <i class="bi bi-person-plus"></i>
+  <h2>Daftar Akun</h2>
+  <p>Buat akun baru untuk menggunakan layanan KK Digital</p>
+
+  <form action="proses_daftar_user.php" method="POST">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <div class="input-box">
+          <i class="bi bi-person-badge"></i>
+          <input type="text" name="nama" placeholder="Nama lengkap" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <div class="input-box">
+          <i class="bi bi-person"></i>
+          <input type="text" name="username" placeholder="Username" required>
+        </div>
+      </div>
     </div>
 
-    <h3 class="text-center fw-bold mb-2">Daftar Akun</h3>
-    <p class="text-center text-muted mb-4">
-        Buat akun untuk mulai menggunakan KK Digital
-    </p>
-
-    <form action="simpan_user.php" method="POST">
-        <div class="mb-3">
-            <label class="form-label">Username</label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
-            </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-box">
+          <i class="bi bi-lock"></i>
+          <input type="password" name="password" placeholder="Password" required>
         </div>
+      </div>
 
-        <div class="mb-4">
-            <label class="form-label">Password</label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
-            </div>
+      <div class="form-group">
+        <label>Konfirmasi Password</label>
+        <div class="input-box">
+          <i class="bi bi-shield-lock"></i>
+          <input type="password" name="konfirmasi_password" placeholder="Ulangi password" required>
         </div>
-
-        <button type="submit" class="btn btn-primary w-100 btn-register">
-            <i class="bi bi-person-check"></i> Daftar
-        </button>
-    </form>
-
-    <p class="text-center mt-4 mb-0">
-        Sudah punya akun?
-        <a href="login_users.php" class="fw-bold">Login sekarang</a>
-    </p>
-
-    <div class="text-center mt-3">
-        <a href="index.php" class="text-muted">
-            <i class="bi bi-arrow-left"></i> Kembali ke Beranda
-        </a>
+      </div>
     </div>
+
+    <button type="submit" class="btn-register">
+      <i class="bi bi-person-plus"></i> Daftar Akun
+    </button>
+
+  </form>
+
+  <p class="bottom-text">
+    Sudah punya akun? <a href="login_users.php">Login sekarang</a>
+  </p>
+
+  <p>
+    <a href="index.php">← Kembali ke Beranda</a>
+  </p>
 
 </div>
 
