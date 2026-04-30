@@ -11,7 +11,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            background: linear-gradient(135deg, #68789a, #05234b);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -23,8 +23,8 @@
             max-width: 430px;
             background: #ffffff;
             border-radius: 22px;
-            padding: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .icon-box {
@@ -39,7 +39,7 @@
             margin: 0 auto 15px;
             font-size: 32px;
         }
-
+        
         .form-control {
             border-radius: 12px;
             padding: 12px;
