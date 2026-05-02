@@ -2,8 +2,8 @@
 session_start();
 include "koneksi.php";
 
-if (!isset($_SESSION['login'])) {
-    header("Location: index.php");
+if (!isset($_SESSION['username'])) {
+    header("Location:login_users.php");
     exit;
 }
 
@@ -12,8 +12,8 @@ $role = $_SESSION['role'];
 if ($role == "admin") {
     $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga");
 } else {
-    $user_id = $_SESSION['user_id'];
-    $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$user_id'");
+    $id_user = $_SESSION['id_user'];
+    $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$id_user'");
 }
 ?>
 

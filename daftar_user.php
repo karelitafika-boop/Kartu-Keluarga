@@ -144,7 +144,7 @@
   <h2>Daftar Akun</h2>
   <p>Buat akun baru untuk menggunakan layanan KK Digital</p>
 
-  <form action="proses_daftar_user.php" method="POST">
+  <form action="simpan_user.php" method="POST">
 
     <div class="form-row">
       <div class="form-group">

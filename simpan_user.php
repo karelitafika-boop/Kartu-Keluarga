@@ -1,23 +1,27 @@
 <?php
 include "koneksi.php";
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = trim($_POST['username']);
+$password = trim($_POST['password']);
 $role = "user";
 
 $cek = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username'");
 
 if (mysqli_num_rows($cek) > 0) {
-    echo "Username sudah digunakan. <a href='daftar_user.php'>Kembali</a>";
+    echo "<script>
+        alert('Username sudah digunakan!');
+        window.location='daftar_user.php';
+    </script>";
 } else {
-    $simpan = mysqli_query($koneksi, "INSERT INTO users 
-    (username, password, role) 
-    VALUES 
-    ('$username', '$password', '$role')");
+
+    $simpan = mysqli_query($koneksi, "INSERT INTO users (username, password, role)
+    VALUES ('$username', '$password', '$role')");
 
     if ($simpan) {
-        header("Location: login_users.php");
-        exit;
+        echo "<script>
+            alert('Akun berhasil dibuat, silakan login!');
+            window.location='login_users.php';
+        </script>";
     } else {
         echo "Gagal daftar: " . mysqli_error($koneksi);
     }
