@@ -19,126 +19,225 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
     <meta charset="UTF-8">
     <title>Kartu Keluarga</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background: #f8f0d9;
-            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(255,255,255,0.5), transparent 35%),
+                linear-gradient(135deg, #67e8f9, #818cf8);
+            color: #1e293b;
         }
 
         .top-bar {
-            background: #0b5cad;
+            background: linear-gradient(90deg, #0f172a, #1d4ed8);
             color: white;
-            padding: 16px 80px;
-            font-size: 26px;
-            font-weight: bold;
+            padding: 20px 50px;
+            font-size: 23px;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
         }
 
         .kk-card {
-            max-width: 1100px;
-            margin: 30px auto 15px;
-            background: #fff7d8;
-            border: 4px double #3e9ec0;
-            border-radius: 18px;
-            padding: 25px 35px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            max-width: 1150px;
+            margin: 42px auto 18px;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 26px;
+            padding: 34px;
+            box-shadow: 0 22px 50px rgba(15, 23, 42, 0.25);
+            border: 1px solid rgba(255,255,255,0.7);
         }
 
         .kk-header {
-            display: flex;
+            display: grid;
+            grid-template-columns: 170px 1fr 190px;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid #3e9ec0;
-            padding-bottom: 18px;
-            margin-bottom: 25px;
+            gap: 20px;
+            padding-bottom: 25px;
+            margin-bottom: 28px;
+            border-bottom: 4px solid transparent;
+            border-image: linear-gradient(90deg, #2563eb, #06b6d4) 1;
         }
 
-        .logo-left {
-            width: 200px;
-            text-align: left;
+        .logo-left,
+        .logo-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo-left img {
-            width: 210px;
-        }
-
-        .logo-right {
-            width: 230px;
-            text-align: right;
+            max-width: 200px;
         }
 
         .logo-right img {
-            width: 200px;
+            max-width: 240px;
         }
 
         .judul-kk {
-            flex: 1;
             text-align: center;
         }
 
         .judul-kk h1 {
-            font-size: 52px;
-            font-weight: 800;
-            letter-spacing: 3px;
+            font-size: 50px;
+            font-weight: 900;
+            letter-spacing: 5px;
             margin: 0;
+            color: #0f172a;
         }
 
         .judul-kk p {
-            margin: 6px 0 0;
-            font-weight: bold;
+            margin: 8px 0 0;
+            font-weight: 700;
             font-size: 15px;
+            color: #334155;
         }
 
         .info-box {
-            background: #fff2ad;
-            border: 2px solid #d8ad36;
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin-bottom: 25px;
-            font-size: 20px;
+            background: linear-gradient(135deg, #fff7cc, #fffbe8);
+            border: 1px solid #facc15;
+            border-radius: 18px;
+            padding: 22px 26px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.18);
         }
 
-        .info-box p {
-            margin-bottom: 12px;
-            border-bottom: 1px dotted #d0b46a;
-            padding-bottom: 8px;
-        }
-
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-title {
-            background: linear-gradient(90deg, #0b86c9, #0b5cad);
-            color: white;
-            padding: 12px 18px;
-            font-size: 21px;
-            font-weight: bold;
-            border-radius: 4px 4px 0 0;
-        }
-
-        table {
-            background: white;
-            border: 2px solid #3e9ec0;
-        }
-
-        th {
-            background: #dff3ff !important;
-            color: #003b6f;
-            text-align: center;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 12px 18px;
             font-size: 17px;
         }
 
-        td {
+        .label {
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .value {
+            color: #334155;
+            border-bottom: 1px dashed #d6b94c;
+            padding-bottom: 8px;
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #0f172a, #1d4ed8);
+            color: white;
+            padding: 15px 20px;
+            font-size: 20px;
+            font-weight: 800;
+            border-radius: 16px 16px 0 0;
+            letter-spacing: .3px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .table {
+            margin-bottom: 0;
+            background: white;
+        }
+
+        .table th {
+            background: linear-gradient(90deg, #dbeafe, #cffafe) !important;
+            color: #0f172a;
+            text-align: center;
+            padding: 16px;
+            font-size: 15px;
+            border: none;
+        }
+
+        .table td {
             text-align: center;
             vertical-align: middle;
-            font-size: 16px;
+            padding: 15px;
+            font-size: 14px;
+            color: #334155;
+            border-color: #e2e8f0;
+        }
+
+        .table tbody tr:hover {
+            background: #eff6ff;
         }
 
         .back-area {
-            max-width: 1100px;
-            margin: 0 auto 35px;
-            text-align: right;
+            max-width: 1150px;
+            margin: 0 auto 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-secondary {
+            background: #475569;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 16px 22px;
+                font-size: 18px;
+            }
+
+            .kk-card {
+                width: 92%;
+                padding: 22px;
+                margin-top: 28px;
+            }
+
+            .kk-header {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .logo-left img {
+                max-width: 105px;
+            }
+
+            .logo-right img {
+                max-width: 125px;
+            }
+
+            .judul-kk h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .judul-kk p {
+                font-size: 12px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                font-size: 15px;
+            }
+
+            .value {
+                margin-bottom: 10px;
+            }
+
+            .back-area {
+                width: 92%;
+            }
         }
     </style>
 </head>
@@ -152,7 +251,7 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 
     <div class="kk-header">
         <div class="logo-left">
-            <img src="assets/garuda.png">
+            <img src="assets/garuda.png" alt="Logo Garuda">
         </div>
 
         <div class="judul-kk">
@@ -161,42 +260,51 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         </div>
 
         <div class="logo-right">
-            <img src="assets/peta.png">
+            <img src="assets/peta.png" alt="Peta Indonesia">
         </div>
     </div>
 
     <div class="info-box">
-        <p><strong>No. KK:</strong> <?= $kk['no_kk']; ?></p>
-        <p><strong>Kepala Keluarga:</strong> <?= $kk['nama_kepala_keluarga']; ?></p>
-        <p><strong>Alamat:</strong> <?= $kk['alamat']; ?></p>
+        <div class="info-grid">
+            <div class="label">No. KK</div>
+            <div class="value"><?= $kk['no_kk']; ?></div>
+
+            <div class="label">Kepala Keluarga</div>
+            <div class="value"><?= $kk['nama_kepala_keluarga']; ?></div>
+
+            <div class="label">Alamat</div>
+            <div class="value"><?= $kk['alamat']; ?></div>
+        </div>
     </div>
 
     <div class="section-title">
         Daftar Anggota Keluarga
     </div>
 
-    <table class="table table-bordered mb-0">
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>NIK</th>
-            <th>Jenis Kelamin</th>
-            <th>Hubungan</th>
-        </tr>
+    <div class="table-wrapper">
+        <table class="table table-bordered align-middle">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NIK</th>
+                <th>Jenis Kelamin</th>
+                <th>Hubungan</th>
+            </tr>
 
-        <?php
-        $no = 1;
-        while ($a = mysqli_fetch_assoc($anggota)) {
-        ?>
-        <tr>
-            <td><?= $no++; ?></td>
-            <td><?= $a['nama']; ?></td>
-            <td><?= $a['nik']; ?></td>
-            <td><?= $a['jenis_kelamin']; ?></td>
-            <td><?= $a['hubungan']; ?></td>
-        </tr>
-        <?php } ?>
-    </table>
+            <?php
+            $no = 1;
+            while ($a = mysqli_fetch_assoc($anggota)) {
+            ?>
+            <tr>
+                <td><?= $no++; ?></td>
+                <td><?= $a['nama']; ?></td>
+                <td><?= $a['nik']; ?></td>
+                <td><?= $a['jenis_kelamin']; ?></td>
+                <td><?= $a['hubungan']; ?></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
 
 </div>
 
