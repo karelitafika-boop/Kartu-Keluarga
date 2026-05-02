@@ -168,6 +168,28 @@
         flex-direction: column;
       }
     }
+
+    .admin-login {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(90deg, #0f172a, #1d4ed8);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.35);
+            z-index: 999;
+            transition: 0.3s;
+        }
+
+        .admin-login:hover {
+            color: white;
+            background: linear-gradient(90deg, #1e293b, #2563eb);
+            transform: translateY(-3px);
+        }
   </style>
 </head>
 <body>
@@ -233,6 +255,10 @@
   </div>
 
 </div>
+
+<a href="login_db.php" class="admin-login">Admin</a>
+
+
 
 </body>
 </html>

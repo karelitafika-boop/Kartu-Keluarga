@@ -21,7 +21,6 @@ if (mysqli_num_rows($query) == 1) {
         header("Location: login_users.php?pesan=gagal");
         exit;
     }
-
 } else {
     header("Location: login_users.php?pesan=gagal");
     exit;

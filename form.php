@@ -18,262 +18,257 @@ if (!isset($_SESSION['username'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+            radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 35%),
+            linear-gradient(135deg, #dbeafe, #0f172a);
+        color: #0f172a;
+    }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 35%),
-                linear-gradient(135deg, #dbeafe, #0f172a);
-            color: #0f172a;
-        }
+    .navbar {
+        background: linear-gradient(90deg, #0f172a, #1d4ed8);
+        padding: 14px 42px;
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
+    }
 
+    .navbar-brand {
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .nav-link {
+        margin: 0 6px;
+        border-radius: 10px;
+        padding: 8px 14px !important;
+        transition: 0.3s;
+    }
+
+    .nav-link:hover {
+        background: rgba(255,255,255,0.18);
+        transform: translateY(-1px);
+    }
+
+    .form-wrapper {
+        max-width: 900px;
+        margin: 55px auto;
+        padding: 0 18px;
+    }
+
+    .form-card {
+        background: rgba(255,255,255,0.94);
+        border-radius: 26px;
+        padding: 36px;
+        box-shadow: 0 25px 55px rgba(15, 23, 42, 0.28);
+        border: 1px solid rgba(255,255,255,0.6);
+        backdrop-filter: blur(8px);
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-title h2 {
+        font-size: 34px;
+        font-weight: 900;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .form-title p {
+        color: #64748b;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    .section-heading {
+        font-size: 20px;
+        font-weight: 800;
+        color: #1d4ed8;
+        margin: 24px 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #dbeafe;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 13px;
+        padding: 13px 15px;
+        border: 1px solid #cbd5e1;
+        font-size: 14px;
+        margin-bottom: 14px;
+        background-color: #f8fafc;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+        background-color: white;
+    }
+    
+    textarea.form-control {
+        min-height: 95px;
+        resize: vertical;
+    }
+
+    .anggota-box {
+        background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        padding: 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+        border: 1px solid #dbeafe;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .anggota-box h4 {
+        font-size: 18px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 16px;
+    }
+
+    .button-area {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+    }
+
+    .btn-add {
+        background: #475569;
+        color: white;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 13px;
+        font-weight: 800;
+        transition: 0.3s;
+    }
+
+    .btn-add:hover {
+        background: #334155;
+        transform: translateY(-2px);
+    }
+
+    .btn-save {
+        background: linear-gradient(90deg, #2563eb, #06b6d4);
+        color: white;
+        padding: 12px 22px;
+        border: none;
+        border-radius: 13px;
+        font-weight: 800;
+        transition: 0.3s;
+        box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
+    }
+
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(37, 99, 235, 0.36);
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.65);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 18px;
+    }
+
+    .popup-box {
+        width: 100%;
+        max-width: 420px;
+        background: white;
+        border-radius: 24px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 25px 55px rgba(0,0,0,0.35);
+    }
+
+    .popup-box h3 {
+        font-size: 24px;
+        font-weight: 900;
+        color: #0f172a;
+        margin-bottom: 10px;
+    }
+
+    .popup-box p {
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 22px;
+    }
+
+    .popup-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .btn-repeat {
+        background: #64748b;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 18px;
+        font-weight: 800;
+    }
+
+    .btn-ok {
+        background: linear-gradient(90deg, #2563eb, #06b6d4);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 22px;
+        font-weight: 800;
+    }
+
+    @media (max-width: 768px) {
         .navbar {
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
-            padding: 14px 42px;
-            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
-        }
-
-        .navbar-brand {
-            font-size: 22px;
-            font-weight: 800;
-        }
-
-        .nav-link {
-            margin: 0 6px;
-            border-radius: 10px;
-            padding: 8px 14px !important;
-            transition: 0.3s;
-        }
-
-        .nav-link:hover {
-            background: rgba(255,255,255,0.18);
-            transform: translateY(-1px);
+            padding: 12px 18px;
         }
 
         .form-wrapper {
-            max-width: 900px;
-            margin: 55px auto;
-            padding: 0 18px;
+            margin: 32px auto;
         }
 
         .form-card {
-            background: rgba(255,255,255,0.94);
-            border-radius: 26px;
-            padding: 36px;
-            box-shadow: 0 25px 55px rgba(15, 23, 42, 0.28);
-            border: 1px solid rgba(255,255,255,0.6);
-            backdrop-filter: blur(8px);
-        }
-
-        .form-title {
-            text-align: center;
-            margin-bottom: 30px;
+            padding: 24px;
         }
 
         .form-title h2 {
-            font-size: 34px;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 8px;
-        }
-
-        .form-title p {
-            color: #64748b;
-            margin-bottom: 0;
-            font-size: 14px;
-        }
-
-        .section-heading {
-            font-size: 20px;
-            font-weight: 800;
-            color: #1d4ed8;
-            margin: 24px 0 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #dbeafe;
-        }
-
-        .form-control,
-        .form-select {
-            border-radius: 13px;
-            padding: 13px 15px;
-            border: 1px solid #cbd5e1;
-            font-size: 14px;
-            margin-bottom: 14px;
-            background-color: #f8fafc;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
-            background-color: white;
-        }
-
-        textarea.form-control {
-            min-height: 95px;
-            resize: vertical;
-        }
-
-        .anggota-box {
-            background: linear-gradient(135deg, #f8fafc, #eff6ff);
-            padding: 22px;
-            border-radius: 20px;
-            margin-bottom: 18px;
-            border: 1px solid #dbeafe;
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-        }
-
-        .anggota-box h4 {
-            font-size: 18px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 16px;
+            font-size: 26px;
         }
 
         .button-area {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 22px;
-            flex-wrap: wrap;
+            flex-direction: column;
         }
 
-        .btn-add {
-            background: #475569;
-            color: white;
-            padding: 12px 18px;
-            border: none;
-            border-radius: 13px;
-            font-weight: 800;
-            transition: 0.3s;
-        }
-
-        .btn-add:hover {
-            background: #334155;
-            transform: translateY(-2px);
-        }
-
+        .btn-add,
         .btn-save {
-            background: linear-gradient(90deg, #2563eb, #06b6d4);
-            color: white;
-            padding: 12px 22px;
-            border: none;
-            border-radius: 13px;
-            font-weight: 800;
-            transition: 0.3s;
-            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
-        }
-
-        .btn-save:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(37, 99, 235, 0.36);
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.65);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            padding: 18px;
-        }
-
-        .popup-box {
             width: 100%;
-            max-width: 420px;
-            background: white;
-            border-radius: 24px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 25px 55px rgba(0,0,0,0.35);
         }
-
-        .popup-box h3 {
-            font-size: 24px;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 10px;
-        }
-
-        .popup-box p {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 22px;
-        }
-
-        .popup-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .btn-repeat {
-            background: #64748b;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 10px 18px;
-            font-weight: 800;
-        }
-
-        .btn-ok {
-            background: linear-gradient(90deg, #2563eb, #06b6d4);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 10px 22px;
-            font-weight: 800;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 12px 18px;
-            }
-
-            .form-wrapper {
-                margin: 32px auto;
-            }
-
-            .form-card {
-                padding: 24px;
-            }
-
-            .form-title h2 {
-                font-size: 26px;
-            }
-
-            .button-area {
-                flex-direction: column;
-            }
-
-            .btn-add,
-            .btn-save {
-                width: 100%;
-            }
-        }
+    }
+    
     </style>
+
 </head>
-
 <body>
-
+    
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <span class="text-light">KK </span><span class="text-info">Digital</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        <a class="navbar-brand" href="#"><span class="text-light">KK </span><span class="text-info">Digital</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-3">
                 <li class="nav-item">

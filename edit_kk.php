@@ -33,7 +33,7 @@ if (!$data) {
 
 <div class="container mt-5">
     <h2>Edit Data Kartu Keluarga</h2>
-
+    
     <form action="update_kk.php" method="POST">
         <input type="hidden" name="id_kk" value="<?= $data['id_kk']; ?>">
 
@@ -55,6 +55,7 @@ if (!$data) {
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="tampil_kk.php" class="btn btn-secondary">Kembali</a>
     </form>
+    
 </div>
 
 </body>

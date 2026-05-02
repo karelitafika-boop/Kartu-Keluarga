@@ -137,28 +137,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             transform: translateY(-3px);
         }
 
-        .admin-login {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.35);
-            z-index: 999;
-            transition: 0.3s;
-        }
-
-        .admin-login:hover {
-            color: white;
-            background: linear-gradient(90deg, #1e293b, #2563eb);
-            transform: translateY(-3px);
-        }
-
         .section-blue {
             background: linear-gradient(90deg, #0f172a, #1d4ed8);
             padding: 65px 20px;
@@ -269,20 +247,14 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             }
         }
     </style>
+
 </head>
-
 <body>
-
+    
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <span class="text-light">KK </span><span class="text-info">Digital</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        <a class="navbar-brand" href="#"><span class="text-light">KK </span><span class="text-info">Digital</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-3">
                 <li class="nav-item">
@@ -302,8 +274,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     </div>
 </nav>
 
-<a href="login_db.php" class="admin-login">Admin</a>
-
 <div class="hero">
     <div class="hero-box">
         <h2>Sistem Pendataan <br><span>Kartu Keluarga Digital</span></h2>
@@ -311,7 +281,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             Sistem Pendataan Kartu Keluarga Digital merupakan platform berbasis web
             untuk mempermudah proses pendataan keluarga secara cepat dan praktis.
         </p>
-
         <div class="hero-actions">
             <a href="form.php" class="btn-main">Input Data</a>
             <a href="tampil_kk.php" class="btn-outline-custom">Tampil KK Saya</a>
@@ -321,7 +290,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 
 <section class="section-blue text-center">
     <h3 class="section-title">Data Kartu Keluarga</h3>
-
     <div class="d-flex gap-4 justify-content-center flex-wrap">
         <div class="card custom-card">
             <div class="card-body">
@@ -329,7 +297,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                 <h2><?= $jml['total']; ?></h2>
             </div>
         </div>
-
         <div class="card custom-card">
             <div class="card-body">
                 <h5>Total Anggota Keluarga</h5>
@@ -341,7 +308,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 
 <section class="section-blue second text-center">
     <h3 class="section-title">Tahap Pengajuan Pendaftaran Kartu Keluarga</h3>
-
     <div class="d-flex gap-4 justify-content-center flex-wrap">
         <div class="card custom-card">
             <div class="card-body">
@@ -349,14 +315,12 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                 <p>Inputkan No. Kartu Keluarga, nama kepala keluarga, dan alamat pada form.</p>
             </div>
         </div>
-
         <div class="card custom-card">
             <div class="card-body">
                 <h5>Data Anggota</h5>
                 <p>Input data anggota keluarga berupa NIK, nama, jenis kelamin, dan hubungan keluarga.</p>
             </div>
         </div>
-
         <div class="card custom-card">
             <div class="card-body">
                 <h5>Simpan Data</h5>
@@ -373,7 +337,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                 <h5><span class="text-light">KK </span><span class="text-info">Digital</span></h5>
                 <p>Sistem Pendataan Kartu Keluarga Digital merupakan platform berbasis web untuk mempermudah proses pendataan keluarga secara cepat dan praktis.</p>
             </div>
-
             <div class="col-md-4 mb-3">
                 <h5>Menu</h5>
                 <p>Dashboard</p>
@@ -381,7 +344,6 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                 <p>Tampil KK Saya</p>
                 <p>Kontak</p>
             </div>
-
             <div class="col-md-4 mb-3">
                 <h5>Kontak</h5>
                 <p>Jl. Babarsari, Kec. Depok, Kab. Sleman, Daerah Istimewa Yogyakarta.</p>
@@ -393,6 +355,7 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
         <hr>
 
         <p class="text-center mb-0">&copy; 2026 KartuKeluarga Digital, All Rights Reserved.</p>
+   
     </div>
 </footer>
 
