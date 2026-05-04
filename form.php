@@ -325,13 +325,9 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <div class="button-area">
-                <button type="button" onclick="tambahAnggota()" class="btn-add">
-                    + Tambah Anggota
-                </button>
+                <button type="button" onclick="tambahAnggota()" class="btn-add"> + Tambah Anggota</button>
 
-                <button type="button" onclick="popup()" class="btn-save">
-                    Simpan Data
-                </button>
+                <button type="button" onclick="popup()" class="btn-save">Cetak Data</button>
             </div>
         </form>
     </div>
@@ -343,8 +339,8 @@ if (!isset($_SESSION['username'])) {
         <p>Kalau masih ada yang salah, klik Ulangi untuk kembali mengoreksi data.</p>
 
         <div class="popup-actions">
-            <button type="button" onclick="ulang()" class="btn-repeat">Ulangi</button>
-            <button type="button" onclick="lanjut()" class="btn-ok">OK</button>
+            <button type="button" onclick="ulang()" class="btn-repeat">ulangi</button>
+            <button type="button" onclick="lanjut()" class="btn-ok">sudahh?</button>
         </div>
     </div>
 </div>

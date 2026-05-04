@@ -125,9 +125,7 @@
       <h1>KK <span>Digital</span></h1>
     </div>
 
-    <p>
-      Sistem Pendataan Kartu Keluarga Digital untuk mempermudah pengelolaan data keluarga.
-    </p>
+    <p>Sistem Pendataan Kartu Keluarga Digital untuk mempermudah pengelolaan data keluarga.</p>
 
     <a href="login_users.php" class="btn-menu">
       <i class="bi bi-box-arrow-in-right"></i> Login
