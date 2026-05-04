@@ -2,8 +2,8 @@
 session_start();
 include "koneksi.php";
 
-if (!isset($_SESSION['login']) || $_SESSION['role'] != "user") {
-    header("Location: login_users.php");
+if (!isset($_SESSION['username'])) {
+    header("Location: landing.php");
     exit;
 }
 

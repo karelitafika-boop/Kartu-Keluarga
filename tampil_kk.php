@@ -3,7 +3,7 @@ session_start();
 include "koneksi.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location:login_users.php");
+    header("Location:landing.php");
     exit;
 }
 
