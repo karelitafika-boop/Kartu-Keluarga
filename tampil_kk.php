@@ -12,8 +12,8 @@ $role = $_SESSION['role'];
 if ($role == "admin") {
     $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga");
 } else {
-    $id_user = $_SESSION['id_user'];
-    $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$id_user'");
+    $user_id = $_SESSION['user_id'];
+    $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$user_id'");
 }
 ?>
 

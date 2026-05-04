@@ -11,7 +11,7 @@ if (mysqli_num_rows($query) == 1) {
     $data = mysqli_fetch_assoc($query);
 
     if ($password == $data['password']) {
-        $_SESSION['id_user'] = $data['id_user'];
+        $_SESSION['user_id'] = $data['id_user'];
         $_SESSION['username'] = $data['username'];
         $_SESSION['role'] = $data['role'];
 
