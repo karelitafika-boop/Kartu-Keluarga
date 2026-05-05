@@ -298,11 +298,23 @@ if (!isset($_SESSION['username'])) {
             <p>Lengkapi data kartu keluarga dan anggota keluarga dengan benar.</p>
         </div>
 
-        <form id="formKK" action="simpan.php" method="POST">
+        <form id="formKK" action="simpan.php" method="POST" enctype="multipart/form-data">
             <h3 class="section-heading">Data Kartu Keluarga</h3>
-
+                
+            
             <input type="text" name="no_kk" class="form-control" placeholder="No KK" required>
             <input type="text" name="nama_kepala_keluarga" class="form-control" placeholder="Nama Kepala Keluarga" required>
+            <label class="fw-bold mb-2">Upload KK Lama</label>
+            <input type="file" name="bukti_kk_lama" class="form-control" accept="image/*,.pdf" required>
+            <small class="text-muted">Upload foto / PDF Kartu Keluarga lama.</small>
+
+            <label class="fw-bold mb-2 mt-3">Upload Akta Lahir</label>
+            <input type="file" name="bukti_akta_lahir" class="form-control" accept="image/*,.pdf" required>
+            <small class="text-muted">Upload akta lahir sebagai bukti data anggota keluarga.</small>
+
+            <label class="fw-bold mb-2 mt-3">Upload Akta Perkawinan</label>
+            <input type="file" name="bukti_akta_perkawinan" class="form-control" accept="image/*,.pdf" required>
+            <small class="text-muted">Upload akta perkawinan / buku nikah sebagai bukti hubungan keluarga.</small>
             <textarea name="alamat" class="form-control" placeholder="Alamat" required></textarea>
 
             <h3 class="section-heading">Anggota Keluarga</h3>

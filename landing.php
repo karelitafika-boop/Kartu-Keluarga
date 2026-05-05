@@ -191,6 +191,20 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
             transform: translateY(-1px);
         }
 
+        @media print {
+            .btn, .navbar, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .card, .container {
+                box-shadow: none !important;
+                border: none !important;
+            }
+        }
         @media (max-width: 768px) {
             .top-bar {
                 padding: 16px 22px;
@@ -315,6 +329,8 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         <a href="dashboard.php" class="btn btn-secondary">← Kembali</a>
     <?php } ?>
 </div>
-
+<button onclick="window.print()" class="btn btn-primary">
+    Cetak / Simpan PDF
+</button>
 </body>
 </html>
