@@ -23,4 +23,4 @@ if (!$hapusKK) {
 
 header("Location: tampil_kk.php");
 exit;
-?>
+?>   
