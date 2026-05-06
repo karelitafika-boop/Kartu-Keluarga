@@ -1,9 +1,42 @@
 <?php
 session_start();
+include "koneksi.php";
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['id_user'])) {
     header("Location: landing.php");
     exit;
+}
+
+$user_id = $_SESSION['id_user'];
+
+// 🔥 CEK apakah user sudah punya KK
+$cek = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$user_id'");
+$dataKK = mysqli_fetch_assoc($cek);
+
+if ($dataKK) {
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudah Punya KK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#dbeafe,#0f172a);">
+
+<div style="background:white;padding:40px;border-radius:20px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+    <h3 style="font-weight:800;">Kamu sudah membuat Kartu Keluarga</h3>
+    <p>Setiap user hanya bisa membuat 1 KK.</p>
+
+    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">
+        Lihat Data KK
+    </a>
+</div>
+
+</body>
+</html>
+<?php
+exit;
 }
 ?>
 
@@ -17,6 +50,7 @@ if (!isset($_SESSION['username'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <!-- 🔥 STYLE KAMU TIDAK DIUBAH -->
     <style>
     * {
         box-sizing: border-box;
@@ -259,12 +293,12 @@ if (!isset($_SESSION['username'])) {
             width: 100%;
         }
     }
-    
     </style>
 
 </head>
 <body>
-    
+
+<!-- 🔥 NAVBAR KAMU -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><span class="text-light">KK </span><span class="text-info">Digital</span></a>
@@ -336,23 +370,38 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
 
+            <!-- 🔥 BUTTON FINAL -->
             <div class="button-area">
-                <button type="button" onclick="tambahAnggota()" class="btn-add"> + Tambah Anggota</button>
 
-                <button type="button" onclick="popup()" class="btn-save">Cetak Data</button>
+                <button type="button" onclick="tambahAnggota()" class="btn-add">
+                    + Tambah Anggota
+                </button>
+
+                <div style="display:flex; gap:10px;">
+
+                    <a href="dashboard.php" class="btn-add" style="text-decoration:none; display:flex; align-items:center;">
+                        ← Kembali
+                    </a>
+
+                    <button type="button" onclick="popup()" class="btn-save">
+                        Cetak Data
+                    </button>
+
+                </div>
+
             </div>
+
         </form>
     </div>
 </div>
 
+<!-- POPUP -->
 <div id="popup" class="popup">
     <div class="popup-box">
         <h3>Apakah data sudah benar?</h3>
-        <p>Kalau masih ada yang salah, klik Ulangi untuk kembali mengoreksi data.</p>
-
         <div class="popup-actions">
-            <button type="button" onclick="ulang()" class="btn-repeat">ulangi</button>
-            <button type="button" onclick="lanjut()" class="btn-ok">sudahh?</button>
+            <button onclick="ulang()" class="btn-repeat">Ulangi</button>
+            <button onclick="lanjut()" class="btn-ok">Lanjut</button>
         </div>
     </div>
 </div>
@@ -362,46 +411,38 @@ let jumlahAnggota = 1;
 
 function tambahAnggota() {
     jumlahAnggota++;
-
     let area = document.getElementById("anggota-area");
 
-    let anggotaBaru = document.createElement("div");
-    anggotaBaru.className = "anggota-box";
+    let div = document.createElement("div");
+    div.className = "anggota-box";
 
-    anggotaBaru.innerHTML = `
+    div.innerHTML = `
         <h4>Anggota ${jumlahAnggota}</h4>
-
         <input type="text" name="nik[]" class="form-control" placeholder="NIK" required>
         <input type="text" name="nama[]" class="form-control" placeholder="Nama" required>
-
         <select name="jenis_kelamin[]" class="form-select" required>
-            <option value="">Pilih Jenis Kelamin</option>
+            <option value="">Pilih</option>
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
         </select>
-
         <input type="text" name="hubungan[]" class="form-control" placeholder="Hubungan" required>
+        <button type="button" onclick="hapusAnggota(this)" class="btn btn-danger mt-2">Hapus</button>
     `;
 
-    area.appendChild(anggotaBaru);
+    area.appendChild(div);
 }
 
-function popup() {
-    let form = document.getElementById("formKK");
-
-    if (form.checkValidity()) {
-        document.getElementById("popup").style.display = "flex";
-    } else {
-        alert("Masih ada data yang belum diisi.");
-        form.reportValidity();
-    }
+function hapusAnggota(btn){
+    btn.parentElement.remove();
 }
 
-function ulang() {
-    document.getElementById("popup").style.display = "none";
+function popup(){
+    document.getElementById("popup").style.display="flex";
 }
-
-function lanjut() {
+function ulang(){
+    document.getElementById("popup").style.display="none";
+}
+function lanjut(){
     document.getElementById("formKK").submit();
 }
 </script>

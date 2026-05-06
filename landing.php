@@ -253,6 +253,35 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
                 width: 92%;
             }
         }
+        .print-area {
+            max-width: 1150px;
+            margin: 10px auto 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-print {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, #2563eb, #06b6d4);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+            transition: 0.2s;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-print:active {
+            transform: scale(0.96);
+        }
     </style>
 </head>
 <body>
@@ -322,6 +351,11 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 
 </div>
 
+<div class="print-area no-print">
+    <button onclick="window.print()" class="btn-print">
+        <i class="bi bi-printer"></i> Cetak / Simpan PDF
+    </button>
+</div>
 <div class="back-area">
     <?php if ($_SESSION['role'] == "admin") { ?>
         <a href="tampil_kk.php" class="btn btn-secondary">← Kembali</a>
@@ -329,8 +363,5 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         <a href="dashboard.php" class="btn btn-secondary">← Kembali</a>
     <?php } ?>
 </div>
-<button onclick="window.print()" class="btn btn-primary">
-    Cetak / Simpan PDF
-</button>
 </body>
 </html>

@@ -23,9 +23,10 @@ $no = $_POST['no_kk'];
 $nama = $_POST['nama_kepala_keluarga'];
 $alamat = $_POST['alamat'];
 
-mysqli_query($koneksi, "INSERT INTO kartu_keluarga 
-(user_id, no_kk, nama_kepala_keluarga, alamat)
-// function upload bukti
+
+// ============================
+// FUNCTION UPLOAD
+// ============================
 function uploadBukti($nama_input) {
     $folder = "uploads/";
 
@@ -40,7 +41,7 @@ function uploadBukti($nama_input) {
     $nama_file = $_FILES[$nama_input]['name'];
     $tmp_file = $_FILES[$nama_input]['tmp_name'];
 
-    $nama_baru = time() . "_" . $nama_input . "_" . $nama_file;
+    $nama_baru = time() . "" . $nama_input . "" . $nama_file;
     $lokasi = $folder . $nama_baru;
 
     if (!move_uploaded_file($tmp_file, $lokasi)) {
@@ -50,12 +51,18 @@ function uploadBukti($nama_input) {
     return $nama_baru;
 }
 
-// upload 3 bukti
+
+// ============================
+// UPLOAD FILE
+// ============================
 $bukti_kk_lama = uploadBukti("bukti_kk_lama");
 $bukti_akta_lahir = uploadBukti("bukti_akta_lahir");
 $bukti_akta_perkawinan = uploadBukti("bukti_akta_perkawinan");
 
-// simpan data KK
+
+// ============================
+// SIMPAN KK
+// ============================
 $simpanKK = mysqli_query($koneksi, "INSERT INTO kartu_keluarga 
 (user_id, no_kk, nama_kepala_keluarga, alamat, bukti_kk_lama, bukti_akta_lahir, bukti_akta_perkawinan, status)
 VALUES
@@ -63,7 +70,10 @@ VALUES
 
 $id = mysqli_insert_id($koneksi);
 
-// simpan anggota keluarga
+
+// ============================
+// SIMPAN ANGGOTA
+// ============================
 $nik = $_POST['nik'];
 $namaA = $_POST['nama'];
 $jk = $_POST['jenis_kelamin'];
@@ -73,17 +83,16 @@ for ($i = 0; $i < count($nik); $i++) {
     mysqli_query($koneksi, "INSERT INTO anggota_keluarga
     (id_kk, nik, nama, jenis_kelamin, hubungan)
     VALUES
-    ('$id', '$nik[$i]', '$namaA[$i]', '$jk[$i]', '$hub[$i]')");
+    ('$id', '{$nik[$i]}', '{$namaA[$i]}', '{$jk[$i]}', '{$hub[$i]}')");
 }
 
-<<<<<<< HEAD
-header("Location: landing.php?id=$id");
-exit;
-=======
+
+// ============================
+// REDIRECT
+// ============================
 echo "<script>
     alert('Data KK berhasil diajukan. Menunggu persetujuan admin.');
     window.location='tampil_kk.php';
 </script>";
 exit;
 ?>
->>>>>>> 0dcda28e00ccad7318efb6406380472130f7b8ba
