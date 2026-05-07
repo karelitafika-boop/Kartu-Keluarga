@@ -1,6 +1,55 @@
 <?php
 session_start();
+
+if(!isset($_POST['step'])){
+
+    unset($_SESSION['kk_lama']);
+    unset($_SESSION['akta_lahir']);
+    unset($_SESSION['akta_perkawinan']);
+
+}
+
+$step = isset($_POST['step']) ? $_POST['step'] : 1;
+$jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : '';
+
 include "koneksi.php";
+
+
+if($step == 2 && isset($_FILES['bukti_kk_lama'])){
+
+    $folder = "uploads/";
+
+    $kk_lama = time()."_".$_FILES['bukti_kk_lama']['name'];
+    move_uploaded_file(
+        $_FILES['bukti_kk_lama']['tmp_name'],
+        $folder.$kk_lama
+    );
+
+    $_SESSION['kk_lama'] = $kk_lama;
+
+
+    $akta_lahir = time()."_".$_FILES['bukti_akta_lahir']['name'];
+    move_uploaded_file(
+        $_FILES['bukti_akta_lahir']['tmp_name'],
+        $folder.$akta_lahir
+    );
+
+    $_SESSION['akta_lahir'] = $akta_lahir;
+
+
+    $akta_nikah = time()."_".$_FILES['bukti_akta_perkawinan']['name'];
+    move_uploaded_file(
+        $_FILES['bukti_akta_perkawinan']['tmp_name'],
+        $folder.$akta_nikah
+    );
+
+    $_SESSION['akta_perkawinan'] = $akta_nikah;
+}
+
+include "koneksi.php";
+
+$step = isset($_POST['step']) ? $_POST['step'] : 1;
+$jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : '';
 
 if (!isset($_SESSION['id_user'])) {
     header("Location: landing.php");
@@ -41,7 +90,9 @@ if ($dataKK) {
 <?php
 exit;
 }
-$jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
+$jumlahAnggota = isset($_POST['jumlah_anggota']) 
+    ? $_POST['jumlah_anggota'] 
+    : 1;
 ?>
 
 
@@ -53,7 +104,6 @@ $jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
     <title>Input Data KK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -344,79 +394,130 @@ $jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
             <p>Lengkapi data kartu keluarga dan anggota keluarga dengan benar.</p>
         </div>
 
-
-        <!-- FORM UTAMA -->
         <form id="formKK" method="POST" enctype="multipart/form-data">
 
             <h3 class="section-heading">Data Kartu Keluarga</h3>
 
-            <input type="text" name="no_kk" class="form-control" placeholder="No KK" required>
+            <input type="text"
+                   name="no_kk"
+                   class="form-control"
+                   placeholder="No KK"
+                   value="<?= $_POST['no_kk'] ?? '' ?>"
+                   required>
 
             <input type="text"
                    name="nama_kepala_keluarga"
                    class="form-control"
                    placeholder="Nama Kepala Keluarga"
+                   value="<?= $_POST['nama_kepala_keluarga'] ?? '' ?>"
                    required>
 
             <label class="fw-bold mb-2">Upload KK Lama</label>
-            <input type="file"
-                   name="bukti_kk_lama"
-                   class="form-control"
-                   accept="image/*,.pdf"
-                   required>
+
+<?php if(!isset($_SESSION['kk_lama'])) { ?>
+
+    <input type="file"
+           name="bukti_kk_lama"
+           class="form-control"
+           accept="image/*,.pdf"
+           required>
+
+<?php } else { ?>
+
+    <input type="text"
+           class="form-control"
+           value="File KK sudah dipilih"
+           readonly>
+
+<?php } ?>
 
             <label class="fw-bold mb-2 mt-3">Upload Akta Lahir</label>
-            <input type="file"
-                   name="bukti_akta_lahir"
-                   class="form-control"
-                   accept="image/*,.pdf"
-                   required>
 
+<?php if(!isset($_SESSION['akta_lahir'])) { ?>
+
+    <input type="file"
+           name="bukti_akta_lahir"
+           class="form-control"
+           accept="image/*,.pdf"
+           required>
+
+<?php } else { ?>
+
+    <input type="text"
+           class="form-control"
+           value="File akta lahir sudah dipilih"
+           readonly>
+
+<?php } ?>
             <label class="fw-bold mb-2 mt-3">Upload Akta Perkawinan</label>
-            <input type="file"
-                   name="bukti_akta_perkawinan"
-                   class="form-control"
-                   accept="image/*,.pdf"
-                   required>
+
+<?php if(!isset($_SESSION['akta_perkawinan'])) { ?>
+
+    <input type="file"
+           name="bukti_akta_perkawinan"
+           class="form-control"
+           accept="image/*,.pdf"
+           required>
+
+<?php } else { ?>
+
+    <input type="text"
+           class="form-control"
+           value="File akta perkawinan sudah dipilih"
+           readonly>
+
+<?php } ?>
 
             <textarea name="alamat"
                       class="form-control"
                       placeholder="Alamat"
-                      required></textarea>
+                      required><?= $_POST['alamat'] ?? '' ?></textarea>
 
 
-            <h3 class="section-heading">Anggota Keluarga</h3>
+            <?php if($step == 1) { ?>
 
-        </form>
+                <h3 class="section-heading">Jumlah Anggota</h3>
+
+                <select name="jumlah_anggota"
+                        class="form-select"
+                        required>
+
+                    <option value="">Pilih jumlah anggota</option>
+
+                    <?php for($i=1; $i<=10; $i++) { ?>
+
+                        <option value="<?= $i ?>">
+                            <?= $i ?> Anggota
+                        </option>
+
+                    <?php } ?>
+
+                </select>
+
+                <button type="submit"
+                        name="step"
+                        value="2"
+                        class="btn-save">
+
+                    Lanjut
+
+                </button>
+
+            <?php } ?>
 
 
-        <!-- FORM KHUSUS JUMLAH -->
-        <form method="POST">
+            <?php if($step >= 2) { ?>
 
-            <select name="jumlah_anggota"
-                    class="form-select mb-3"
-                    onchange="this.submit()">
+                <input type="hidden"
+                       name="step"
+                       value="2">
 
-                <?php for($i=1; $i<=10; $i++) { ?>
-
-                    <option value="<?= $i ?>"
-                        <?= ($jumlahAnggota==$i ? 'selected' : '') ?>>
-
-                        <?= $i ?> Anggota
-
-                    </option>
-
-                <?php } ?>
-
-            </select>
-
-        </form>
+                <input type="hidden"
+                       name="jumlah_anggota"
+                       value="<?= $jumlahAnggota ?>">
 
 
-        <!-- LANJUT FORM UTAMA -->
-        <form id="formKK" method="POST" enctype="multipart/form-data">
-
-            <div id="anggota-area">
+                <h3 class="section-heading">Anggota Keluarga</h3>
 
                 <?php for($i=1; $i<=$jumlahAnggota; $i++) { ?>
 
@@ -425,51 +526,57 @@ $jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
                         <h4>Anggota <?= $i ?></h4>
 
                         <input type="text"
-                               name="nik[]"
-                               class="form-control"
-                               placeholder="NIK"
-                               required>
+       name="nik[]"
+       class="form-control"
+       placeholder="NIK"
+       value="<?= $_POST['nik'][$i-1] ?? '' ?>"
+       required>
 
-                        <input type="text"
-                               name="nama[]"
-                               class="form-control"
-                               placeholder="Nama"
-                               required>
 
-                        <select name="jenis_kelamin[]"
-                                class="form-select"
-                                required>
+<input type="text"
+       name="nama[]"
+       class="form-control"
+       placeholder="Nama"
+       value="<?= $_POST['nama'][$i-1] ?? '' ?>"
+       required>
 
-                            <option value="">Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
 
-                        </select>
+<select name="jenis_kelamin[]"
+        class="form-select"
+        required>
 
-                        <input type="text"
-                               name="hubungan[]"
-                               class="form-control"
-                               placeholder="Hubungan"
-                               required>
+    <option value="">Pilih Jenis Kelamin</option>
+
+    <option value="Laki-laki"
+        <?= (($_POST['jenis_kelamin'][$i-1] ?? '') == 'Laki-laki') ? 'selected' : '' ?>>
+
+        Laki-laki
+
+    </option>
+
+    <option value="Perempuan"
+        <?= (($_POST['jenis_kelamin'][$i-1] ?? '') == 'Perempuan') ? 'selected' : '' ?>>
+
+        Perempuan
+
+    </option>
+
+</select>
+
+
+<input type="text"
+       name="hubungan[]"
+       class="form-control"
+       placeholder="Hubungan"
+       value="<?= $_POST['hubungan'][$i-1] ?? '' ?>"
+       required>
 
                     </div>
 
                 <?php } ?>
 
-            </div>
 
-
-            <div class="button-area">
-
-                <button type="submit"
-        name="jumlah_anggota"
-        value="<?= $jumlahAnggota + 1 ?>"
-        class="btn-add">
-
-    + Tambah Anggota
-
-</button>
-                <div style="display:flex; gap:10px;">
+                <div class="button-area">
 
                     <a href="dashboard.php"
                        class="btn-add"
@@ -479,49 +586,55 @@ $jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
 
                     </a>
 
-                    <button type="button"
-                            onclick="popup()"
-                            class="btn-save">
+                    <button type="submit"
+        name="step"
+        value="3"
+        class="btn-save">
 
-                        Cetak Data
+    Review Data
 
-                    </button>
+</button>
 
                 </div>
+                
 
-            </div>
+            <?php if($step == 3) { ?>
 
+    <div class="popup-box mt-4">
+
+        <h3>Apakah data sudah benar?</h3>
+
+        <div class="popup-actions">
+
+            <button type="submit"
+                    name="step"
+                    value="2"
+                    class="btn-repeat">
+
+                Ulangi
+
+            </button>
+
+
+            <button type="submit"
+                    formaction="simpan.php"
+                    class="btn-ok">
+
+                Lanjut
+
+            </button>
+
+        </div>
+
+    </div>
+
+<?php } ?>
+<?php } ?>
         </form>
 
     </div>
 </div>
 
-<div id="popup" class="popup">
-    <div class="popup-box">
-        <h3>Apakah data sudah benar?</h3>
-        <div class="popup-actions">
-            <button onclick="ulang()" class="btn-repeat">Ulangi</button>
-            <button onclick="lanjut()" class="btn-ok">Lanjut</button>
-        </div>
-    </div>
-</div>
-
-<script>
-
-function popup(){
-    document.getElementById("popup").style.display = "flex";
-}
-
-function ulang(){
-    document.getElementById("popup").style.display = "none";
-}
-
-function lanjut(){
-    document.getElementById("formKK").action = "simpan.php";
-    document.getElementById("formKK").submit();
-}
-
-</script>
 
 </body>
 </html>
