@@ -80,7 +80,12 @@ if ($role == "admin") {
     }
 
     .table thead {
-        background: rgba(255,255,255,0.15);
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    }
+
+    .table thead th {
+        color: white;
+        background: linear-gradient(90deg, #142b4e, rgb(4, 18, 46));
     }
 
     .table tbody tr {
@@ -116,7 +121,7 @@ if ($role == "admin") {
 <div class="container">
 <div class="glass-card">
 
-    <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
+    <a href="login_users.php" class="btn btn-secondary mb-3">← Kembali</a>
 
     <h2>Data Kartu Keluarga</h2>
 
@@ -230,8 +235,7 @@ if ($role == "admin") {
                         <form action="ajukan_perubahan.php" method="POST" class="mt-2">
                             <input type="hidden" name="id_kk" value="<?= $d['id_kk']; ?>">
                             <textarea name="komentar_user" class="form-control mb-2" placeholder="Alasan perubahan..." required></textarea>
-                            <button type="submit" class="btn btn-warning btn-sm">
-                                Ajukan Perubahan
+                            <button type="submit" class="btn btn-warning btn-sm"> Keterangan
                             </button>
                         </form>
                     <?php } ?>

@@ -29,7 +29,14 @@ if ($dataKK) {
 <div style="background:white;padding:40px;border-radius:20px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.3);">
     <h3 style="font-weight:800;">Kamu sudah membuat Kartu Keluarga</h3>
     <p>Setiap user hanya bisa membuat 1 KK.</p>
+<<<<<<< HEAD
     <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
+=======
+    <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
+    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">
+        Lihat Data KK
+    </a>
+>>>>>>> 4e2af4c (menambah style)
 </div>
 
 </body>
@@ -152,9 +159,16 @@ exit;
         min-height: 95px;
         resize: vertical;
     }
-
+    .btn-secondary{
+        background: rgba(255,255,255,0.08);
+        border-radius: 25px;
+        padding: 30px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
     .anggota-box {
-        background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        background: linear-gradient(135deg, #f8fafc, #eff6ffc0);
         padding: 22px;
         border-radius: 20px;
         margin-bottom: 18px;
