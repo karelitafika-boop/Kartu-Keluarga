@@ -23,20 +23,16 @@ if ($dataKK) {
     <title>Sudah Punya KK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#dbeafe,#0f172a);">
     
 <div style="background:white;padding:40px;border-radius:20px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.3);">
     <h3 style="font-weight:800;">Kamu sudah membuat Kartu Keluarga</h3>
     <p>Setiap user hanya bisa membuat 1 KK.</p>
-<<<<<<< HEAD
     <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
-=======
     <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
-    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">
-        Lihat Data KK
-    </a>
->>>>>>> 4e2af4c (menambah style)
+    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
 </div>
 
 </body>
@@ -45,7 +41,9 @@ if ($dataKK) {
 <?php
 exit;
 }
+$jumlahAnggota = isset($_POST['jumlah_anggota']) ? $_POST['jumlah_anggota'] : 1;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -340,53 +338,161 @@ exit;
 
 <div class="form-wrapper">
     <div class="form-card">
+
         <div class="form-title">
             <h2>Input Data Kartu Keluarga</h2>
             <p>Lengkapi data kartu keluarga dan anggota keluarga dengan benar.</p>
         </div>
-        <form id="formKK" action="simpan.php" method="POST" enctype="multipart/form-data">
+
+
+        <!-- FORM UTAMA -->
+        <form id="formKK" method="POST" enctype="multipart/form-data">
+
             <h3 class="section-heading">Data Kartu Keluarga</h3>
+
             <input type="text" name="no_kk" class="form-control" placeholder="No KK" required>
-            <input type="text" name="nama_kepala_keluarga" class="form-control" placeholder="Nama Kepala Keluarga" required>
-            
+
+            <input type="text"
+                   name="nama_kepala_keluarga"
+                   class="form-control"
+                   placeholder="Nama Kepala Keluarga"
+                   required>
+
             <label class="fw-bold mb-2">Upload KK Lama</label>
-            <input type="file" name="bukti_kk_lama" class="form-control" accept="image/*,.pdf" required>
-            <small class="text-muted">Upload foto / PDF Kartu Keluarga lama.</small>
+            <input type="file"
+                   name="bukti_kk_lama"
+                   class="form-control"
+                   accept="image/*,.pdf"
+                   required>
 
             <label class="fw-bold mb-2 mt-3">Upload Akta Lahir</label>
-            <input type="file" name="bukti_akta_lahir" class="form-control" accept="image/*,.pdf" required>
-            <small class="text-muted">Upload akta lahir sebagai bukti data anggota keluarga.</small>
+            <input type="file"
+                   name="bukti_akta_lahir"
+                   class="form-control"
+                   accept="image/*,.pdf"
+                   required>
 
             <label class="fw-bold mb-2 mt-3">Upload Akta Perkawinan</label>
-            <input type="file" name="bukti_akta_perkawinan" class="form-control" accept="image/*,.pdf" required>
-            <small class="text-muted">Upload akta perkawinan / buku nikah sebagai bukti hubungan keluarga.</small>
-            <textarea name="alamat" class="form-control" placeholder="Alamat" required></textarea>
+            <input type="file"
+                   name="bukti_akta_perkawinan"
+                   class="form-control"
+                   accept="image/*,.pdf"
+                   required>
+
+            <textarea name="alamat"
+                      class="form-control"
+                      placeholder="Alamat"
+                      required></textarea>
+
 
             <h3 class="section-heading">Anggota Keluarga</h3>
-            <div id="anggota-area">
-                <div class="anggota-box">
-                    <h4>Anggota 1</h4>
-                    <input type="text" name="nik[]" class="form-control" placeholder="NIK" required>
-                    <input type="text" name="nama[]" class="form-control" placeholder="Nama" required>
 
-                    <select name="jenis_kelamin[]" class="form-select" required>
-                        <option value="">Pilih Jenis Kelamin</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
-                    
-                    <input type="text" name="hubungan[]" class="form-control" placeholder="Hubungan" required>
-                </div>
+        </form>
+
+
+        <!-- FORM KHUSUS JUMLAH -->
+        <form method="POST">
+
+            <select name="jumlah_anggota"
+                    class="form-select mb-3"
+                    onchange="this.submit()">
+
+                <?php for($i=1; $i<=10; $i++) { ?>
+
+                    <option value="<?= $i ?>"
+                        <?= ($jumlahAnggota==$i ? 'selected' : '') ?>>
+
+                        <?= $i ?> Anggota
+
+                    </option>
+
+                <?php } ?>
+
+            </select>
+
+        </form>
+
+
+        <!-- LANJUT FORM UTAMA -->
+        <form id="formKK" method="POST" enctype="multipart/form-data">
+
+            <div id="anggota-area">
+
+                <?php for($i=1; $i<=$jumlahAnggota; $i++) { ?>
+
+                    <div class="anggota-box">
+
+                        <h4>Anggota <?= $i ?></h4>
+
+                        <input type="text"
+                               name="nik[]"
+                               class="form-control"
+                               placeholder="NIK"
+                               required>
+
+                        <input type="text"
+                               name="nama[]"
+                               class="form-control"
+                               placeholder="Nama"
+                               required>
+
+                        <select name="jenis_kelamin[]"
+                                class="form-select"
+                                required>
+
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+
+                        </select>
+
+                        <input type="text"
+                               name="hubungan[]"
+                               class="form-control"
+                               placeholder="Hubungan"
+                               required>
+
+                    </div>
+
+                <?php } ?>
+
             </div>
+
 
             <div class="button-area">
-                <button type="button" onclick="tambahAnggota()" class="btn-add">+ Tambah Anggota</button>
+
+                <button type="submit"
+        name="jumlah_anggota"
+        value="<?= $jumlahAnggota + 1 ?>"
+        class="btn-add">
+
+    + Tambah Anggota
+
+</button>
                 <div style="display:flex; gap:10px;">
-                    <a href="dashboard.php" class="btn-add" style="text-decoration:none; display:flex; align-items:center;">← Kembali</a>
-                    <button type="button" onclick="popup()" class="btn-save">Cetak Data</button>
+
+                    <a href="dashboard.php"
+                       class="btn-add"
+                       style="text-decoration:none; display:flex; align-items:center;">
+
+                        ← Kembali
+
+                    </a>
+
+                    <button type="button"
+                            onclick="popup()"
+                            class="btn-save">
+
+                        Cetak Data
+
+                    </button>
+
                 </div>
+
             </div>
+
         </form>
+
     </div>
 </div>
 
@@ -401,42 +507,17 @@ exit;
 </div>
 
 <script>
-let jumlahAnggota = 1;
-
-function tambahAnggota() {
-    jumlahAnggota++;
-    let area = document.getElementById("anggota-area");
-
-    let div = document.createElement("div");
-    div.className = "anggota-box";
-
-    div.innerHTML = `
-        <h4>Anggota ${jumlahAnggota}</h4>
-        <input type="text" name="nik[]" class="form-control" placeholder="NIK" required>
-        <input type="text" name="nama[]" class="form-control" placeholder="Nama" required>
-        <select name="jenis_kelamin[]" class="form-select" required>
-            <option value="">Pilih</option>
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select>
-        <input type="text" name="hubungan[]" class="form-control" placeholder="Hubungan" required>
-        <button type="button" onclick="hapusAnggota(this)" class="btn btn-danger mt-2">Hapus</button>
-    `;
-
-    area.appendChild(div);
-}
-
-function hapusAnggota(btn){
-    btn.parentElement.remove();
-}
 
 function popup(){
-    document.getElementById("popup").style.display="flex";
+    document.getElementById("popup").style.display = "flex";
 }
+
 function ulang(){
-    document.getElementById("popup").style.display="none";
+    document.getElementById("popup").style.display = "none";
 }
+
 function lanjut(){
+    document.getElementById("formKK").action = "simpan.php";
     document.getElementById("formKK").submit();
 }
 
