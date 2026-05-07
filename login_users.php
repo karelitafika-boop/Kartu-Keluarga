@@ -197,7 +197,7 @@
 <div class="login-card">
 
   <h2>Login User</h2>
-  <p>Masuk untuk mengelola data Kartu Keluarga Digital</p>
+  <p>Masuk untuk mengajukan data Kartu Keluarga Digital</p>
 
   <?php
   if (isset($_GET['pesan']) && $_GET['pesan'] == "gagal") {

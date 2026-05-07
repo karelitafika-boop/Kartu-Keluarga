@@ -162,7 +162,6 @@
       </div>
     </div>
   </div>
-
   <div class="form-row">
     <div class="form-group">
       <label>Password</label>

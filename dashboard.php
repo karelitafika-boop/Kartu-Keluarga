@@ -22,232 +22,232 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        margin: 0;
+        background: #e0f2fe;
+        color: #0f172a;
+    }
 
-        body {
-            margin: 0;
-            background: #e0f2fe;
-            color: #0f172a;
-        }
+    .navbar {
+        background: linear-gradient(90deg, #0f172a, #1d4ed8);
+        padding: 14px 42px;
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
+    }
 
+    .navbar-brand {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: .3px;
+    }
+
+    .nav-link {
+        margin: 0 6px;
+        border-radius: 10px;
+        padding: 8px 14px !important;
+        transition: 0.3s;
+    }
+
+    .nav-link:hover {
+        background: rgba(255,255,255,0.18);
+        transform: translateY(-1px);
+    }
+
+    .hero {
+        min-height: 700px;
+        background: url(assets/keluarga.png) center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 100px;
+        padding-right: 40px;
+    }
+
+    .hero-box {
+        background: rgba(15, 23, 42, 0.72);
+        padding: 36px;
+        border-radius: 24px;
+        max-width: 580px;
+        color: white;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .hero-box h2 {
+        font-size: 36px;
+        font-weight: 900;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+
+    .hero-box h2 span {
+        color: #38bdf8;
+    }
+
+    .hero-box p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+        color: #e2e8f0;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-main {
+        background: linear-gradient(90deg, #2563eb, #06b6d4);
+        color: white;
+        border: none;
+        border-radius: 13px;
+        padding: 11px 20px;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+        transition: 0.3s;
+    }
+
+    .btn-main:hover {
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.32);
+    }
+
+    .btn-outline-custom {
+        background: rgba(255,255,255,0.9);
+        color: #1d4ed8;
+        border: none;
+        border-radius: 13px;
+        padding: 11px 20px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .btn-outline-custom:hover {
+        background: white;
+        color: #0f172a;
+        transform: translateY(-3px);
+    }
+
+    .section-blue {
+        background: linear-gradient(90deg, #0f172a, #1d4ed8);
+        padding: 65px 20px;
+    }
+
+    .section-blue.second {
+        padding-top: 30px;
+    }
+
+    .section-title {
+        color: white;
+        font-weight: 900;
+        margin-bottom: 35px;
+        text-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+    }
+
+    .custom-card {
+        width: 310px;
+        border: none;
+        border-radius: 22px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.96);
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+        transition: 0.3s;
+    }
+
+    .custom-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.25);
+    }
+
+    .custom-card .card-body {
+        padding: 30px 24px;
+    }
+
+    .custom-card h5 {
+        color: #1d4ed8;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .custom-card h2 {
+        color: #0f172a;
+        font-size: 44px;
+        font-weight: 900;
+        margin: 0;
+    }
+
+    .custom-card p {
+        color: #475569;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    footer {
+        background: #0f172a !important;
+        padding-top: 45px !important;
+    }
+
+    footer h5 {
+        font-weight: 800;
+        margin-bottom: 16px;
+    }
+
+    footer p {
+        color: #94a3b8 !important;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    footer hr {
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
         .navbar {
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
-            padding: 14px 42px;
-            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
-        }
-
-        .navbar-brand {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: .3px;
-        }
-
-        .nav-link {
-            margin: 0 6px;
-            border-radius: 10px;
-            padding: 8px 14px !important;
-            transition: 0.3s;
-        }
-
-        .nav-link:hover {
-            background: rgba(255,255,255,0.18);
-            transform: translateY(-1px);
+            padding: 12px 18px;
         }
 
         .hero {
-            min-height: 700px;
-            background: url(assets/keluarga.png) center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-left: 100px;
-            padding-right: 40px;
+            min-height: 620px;
+            padding: 30px 20px;
+            justify-content: center;
+            text-align: center;
         }
 
         .hero-box {
-            background: rgba(15, 23, 42, 0.72);
-            padding: 36px;
-            border-radius: 24px;
-            max-width: 580px;
-            color: white;
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.25);
+            padding: 25px;
         }
 
         .hero-box h2 {
-            font-size: 36px;
-            font-weight: 900;
-            line-height: 1.3;
-            margin-bottom: 16px;
-        }
-
-        .hero-box h2 span {
-            color: #38bdf8;
-        }
-
-        .hero-box p {
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 22px;
-            color: #e2e8f0;
+            font-size: 28px;
         }
 
         .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn-main {
-            background: linear-gradient(90deg, #2563eb, #06b6d4);
-            color: white;
-            border: none;
-            border-radius: 13px;
-            padding: 11px 20px;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
-            transition: 0.3s;
-        }
-
-        .btn-main:hover {
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.32);
-        }
-
-        .btn-outline-custom {
-            background: rgba(255,255,255,0.9);
-            color: #1d4ed8;
-            border: none;
-            border-radius: 13px;
-            padding: 11px 20px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-outline-custom:hover {
-            background: white;
-            color: #0f172a;
-            transform: translateY(-3px);
+            justify-content: center;
         }
 
         .section-blue {
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
-            padding: 65px 20px;
+            padding: 48px 16px;
         }
 
-        .section-blue.second {
-            padding-top: 30px;
+        .admin-login {
+            bottom: 18px;
+            right: 18px;
+            padding: 10px 18px;
         }
-
-        .section-title {
-            color: white;
-            font-weight: 900;
-            margin-bottom: 35px;
-            text-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
-        }
-
-        .custom-card {
-            width: 310px;
-            border: none;
-            border-radius: 22px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.96);
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
-            transition: 0.3s;
-        }
-
-        .custom-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.25);
-        }
-
-        .custom-card .card-body {
-            padding: 30px 24px;
-        }
-
-        .custom-card h5 {
-            color: #1d4ed8;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .custom-card h2 {
-            color: #0f172a;
-            font-size: 44px;
-            font-weight: 900;
-            margin: 0;
-        }
-
-        .custom-card p {
-            color: #475569;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-
-        footer {
-            background: #0f172a !important;
-            padding-top: 45px !important;
-        }
-
-        footer h5 {
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        footer p {
-            color: #94a3b8 !important;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        footer hr {
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 12px 18px;
-            }
-
-            .hero {
-                min-height: 620px;
-                padding: 30px 20px;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .hero-box {
-                padding: 25px;
-            }
-
-            .hero-box h2 {
-                font-size: 28px;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .section-blue {
-                padding: 48px 16px;
-            }
-
-            .admin-login {
-                bottom: 18px;
-                right: 18px;
-                padding: 10px 18px;
-            }
-        }
+    }
     </style>
-
+    
 </head>
 <body>
     
@@ -351,7 +351,7 @@ $jml_anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                 <p>keluargadigital@gmail.com</p>
             </div>
         </div>
-
+        
         <hr>
 
         <p class="text-center mb-0">&copy; 2026 KartuKeluarga Digital, All Rights Reserved.</p>

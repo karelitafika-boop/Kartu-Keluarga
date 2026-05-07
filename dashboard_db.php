@@ -109,9 +109,8 @@ if(!isset($_SESSION['username'])){
     <ul>
         <li>
             <a href="tampil_kk.php"><i class="bi bi-people"></i>Data Kartu Keluarga</a>
-        </li>
+        </li>    
     </ul>
-    
     <form action="logout.php" method="POST"><input type="submit" value="Logout"></form>
 
 </div>

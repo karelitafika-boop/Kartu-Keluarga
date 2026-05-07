@@ -9,32 +9,32 @@ if (!isset($_SESSION['id_user'])) {
 
 $user_id = $_SESSION['id_user'];
 
-// 🔥 CEK apakah user sudah punya KK
 $cek = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga WHERE user_id='$user_id'");
 $dataKK = mysqli_fetch_assoc($cek);
 
 if ($dataKK) {
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudah Punya KK</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#dbeafe,#0f172a);">
-
+    
 <div style="background:white;padding:40px;border-radius:20px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.3);">
     <h3 style="font-weight:800;">Kamu sudah membuat Kartu Keluarga</h3>
     <p>Setiap user hanya bisa membuat 1 KK.</p>
-
-    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">
-        Lihat Data KK
-    </a>
+    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
 </div>
 
 </body>
 </html>
+
 <?php
 exit;
 }
@@ -44,13 +44,13 @@ exit;
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Data KK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- 🔥 STYLE KAMU TIDAK DIUBAH -->
+    
     <style>
     * {
         box-sizing: border-box;
@@ -297,8 +297,7 @@ exit;
 
 </head>
 <body>
-
-<!-- 🔥 NAVBAR KAMU -->
+    
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><span class="text-light">KK </span><span class="text-info">Digital</span></a>
@@ -331,13 +330,11 @@ exit;
             <h2>Input Data Kartu Keluarga</h2>
             <p>Lengkapi data kartu keluarga dan anggota keluarga dengan benar.</p>
         </div>
-
         <form id="formKK" action="simpan.php" method="POST" enctype="multipart/form-data">
             <h3 class="section-heading">Data Kartu Keluarga</h3>
-                
-            
             <input type="text" name="no_kk" class="form-control" placeholder="No KK" required>
             <input type="text" name="nama_kepala_keluarga" class="form-control" placeholder="Nama Kepala Keluarga" required>
+            
             <label class="fw-bold mb-2">Upload KK Lama</label>
             <input type="file" name="bukti_kk_lama" class="form-control" accept="image/*,.pdf" required>
             <small class="text-muted">Upload foto / PDF Kartu Keluarga lama.</small>
@@ -352,11 +349,9 @@ exit;
             <textarea name="alamat" class="form-control" placeholder="Alamat" required></textarea>
 
             <h3 class="section-heading">Anggota Keluarga</h3>
-
             <div id="anggota-area">
                 <div class="anggota-box">
                     <h4>Anggota 1</h4>
-
                     <input type="text" name="nik[]" class="form-control" placeholder="NIK" required>
                     <input type="text" name="nama[]" class="form-control" placeholder="Nama" required>
 
@@ -365,37 +360,22 @@ exit;
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
-
+                    
                     <input type="text" name="hubungan[]" class="form-control" placeholder="Hubungan" required>
                 </div>
             </div>
 
-            <!-- 🔥 BUTTON FINAL -->
             <div class="button-area">
-
-                <button type="button" onclick="tambahAnggota()" class="btn-add">
-                    + Tambah Anggota
-                </button>
-
+                <button type="button" onclick="tambahAnggota()" class="btn-add">+ Tambah Anggota</button>
                 <div style="display:flex; gap:10px;">
-
-                    <a href="dashboard.php" class="btn-add" style="text-decoration:none; display:flex; align-items:center;">
-                        ← Kembali
-                    </a>
-
-                    <button type="button" onclick="popup()" class="btn-save">
-                        Cetak Data
-                    </button>
-
+                    <a href="dashboard.php" class="btn-add" style="text-decoration:none; display:flex; align-items:center;">← Kembali</a>
+                    <button type="button" onclick="popup()" class="btn-save">Cetak Data</button>
                 </div>
-
             </div>
-
         </form>
     </div>
 </div>
 
-<!-- POPUP -->
 <div id="popup" class="popup">
     <div class="popup-box">
         <h3>Apakah data sudah benar?</h3>
@@ -445,6 +425,7 @@ function ulang(){
 function lanjut(){
     document.getElementById("formKK").submit();
 }
+
 </script>
 
 </body>

@@ -26,17 +26,18 @@ if (!$data) {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit KK</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container mt-5">
     <h2>Edit Data Kartu Keluarga</h2>
-    
     <form action="update_kk.php" method="POST">
         <input type="hidden" name="id_kk" value="<?= $data['id_kk']; ?>">
-
         <div class="mb-3">
             <label>No KK</label>
             <input type="text" name="no_kk" class="form-control" value="<?= $data['no_kk']; ?>" required>
