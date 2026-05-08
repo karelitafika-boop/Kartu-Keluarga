@@ -192,19 +192,32 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         }
 
         @media print {
-            .btn, .navbar, .no-print {
-                display: none !important;
-            }
 
-            body {
-                background: white !important;
-            }
-
-            .card, .container {
-                box-shadow: none !important;
-                border: none !important;
-            }
+        body {
+            background: white !important;
         }
+
+        .no-print {
+            display: none !important;
+        }
+
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        .kk-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
+        .kk-header img {
+            width: 100px !important;
+            height: auto !important;
+        }
+
+    }
         @media (max-width: 768px) {
             .top-bar {
                 padding: 16px 22px;

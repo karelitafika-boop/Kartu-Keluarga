@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (isset($_POST['step']) && $_POST['step'] == 4) {
+    include "simpan.php";
+    exit;
+}
 if(!isset($_POST['step'])){
 
     unset($_SESSION['kk_lama']);
@@ -271,15 +275,18 @@ $jumlahAnggota = isset($_POST['jumlah_anggota'])
     }
 
     .popup {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.65);
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        padding: 18px;
-    }
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+}
 
     .popup-box {
         width: 100%;
@@ -578,7 +585,7 @@ $jumlahAnggota = isset($_POST['jumlah_anggota'])
 
                 <div class="button-area">
 
-                    <a href="dashboard.php"
+                    <a href="form.php"
                        class="btn-add"
                        style="text-decoration:none; display:flex; align-items:center;">
 
@@ -586,47 +593,56 @@ $jumlahAnggota = isset($_POST['jumlah_anggota'])
 
                     </a>
 
-                    <button type="submit"
-        name="step"
-        value="3"
-        class="btn-save">
-
-    Review Data
-
-</button>
+                    <button type="submit" name="step" value="3" class="btn-save">Review Data</button>
 
                 </div>
                 
 
             <?php if($step == 3) { ?>
 
-    <div class="popup-box mt-4">
+<div style="
+    margin-top:25px;
+    background: linear-gradient(135deg,#f8fafc,#e0f2fe);
+    border-radius:20px;
+    padding:25px;
+    border:1px solid #dbeafe;
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    text-align:center;
+">
 
-        <h3>Apakah data sudah benar?</h3>
+    <h3 style="font-weight:800; color:#0f172a; margin-bottom:10px;">
+        Periksa kembali data kamu
+    </h3>
 
-        <div class="popup-actions">
+    <p style="color:#64748b; font-size:14px;">
+        Pastikan semua data sudah benar sebelum disimpan.
+    </p>
 
-            <button type="submit"
-                    name="step"
-                    value="2"
-                    class="btn-repeat">
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
 
-                Ulangi
+        <!-- 🔁 Ulangi -->
+        <button type="submit"
+                name="step"
+                value="2"
+                class="btn-add">
 
-            </button>
+            Ulangi
 
+        </button>
 
-            <button type="submit"
-                    formaction="simpan.php"
-                    class="btn-ok">
+        <!-- ✅ Simpan -->
+        <button type="submit"
+                name="step"
+                value="4"
+                class="btn-save">
 
-                Lanjut
+            Simpan Data
 
-            </button>
-
-        </div>
+        </button>
 
     </div>
+
+</div>
 
 <?php } ?>
 <?php } ?>

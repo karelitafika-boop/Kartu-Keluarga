@@ -121,7 +121,11 @@ if ($role == "admin") {
 <div class="container">
 <div class="glass-card">
 
+    <?php if ($role == "admin") { ?>
     <a href="login_users.php" class="btn btn-secondary mb-3">← Kembali</a>
+    <?php } else { ?>
+        <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
+    <?php } ?>
 
     <h2>Data Kartu Keluarga</h2>
 

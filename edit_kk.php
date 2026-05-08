@@ -22,7 +22,6 @@ if (!$data) {
     exit;
 }
 
-/* ambil data anggota */
 $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$id'");
 ?>
 
@@ -30,31 +29,27 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit KK</title>
-    
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
+            background: linear-gradient(135deg, #e0f2fe, #1e3a8a);
             min-height: 100vh;
         }
 
         .card-form {
-            max-width: 600px;
+            max-width: 750px;
             margin: auto;
-            margin-top: 80px;
-            padding: 30px;
-            border-radius: 20px;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 70px;
+            padding: 35px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
 
         h2 {
@@ -62,40 +57,60 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
             margin-bottom: 25px;
         }
 
+        h5 {
+            margin-top: 35px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
         label {
             font-weight: 500;
-            margin-bottom: 5px;
         }
 
         .form-control {
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 10px;
+            border: 1px solid #cbd5e1;
         }
 
         .form-control:focus {
-            box-shadow: 0 0 0 0.2rem rgba(255,107,53,0.25);
-            border-color: #ff6b35;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+
+        .table th {
+           background: linear-gradient(90deg, #142b4e, rgb(4, 18, 46));
+            color: white;
+            text-align: center;
+        }
+
+        .table tbody tr:hover {
+            background: #f1f5f9;
         }
 
         .btn-primary {
-            background: #ff6b35;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
             border: none;
             border-radius: 30px;
-            padding: 10px 20px;
-        }
-
-        .btn-primary:hover {
-            background: #e65a28;
+            padding: 10px 25px;
         }
 
         .btn-secondary {
+            background: #64748b;
+            color: white;
             border-radius: 30px;
-            padding: 10px 20px;
+            padding: 10px 25px;
+        }
+
+        .btn-danger {
+            border-radius: 10px;
         }
 
         .btn-group-custom {
             display: flex;
+            justify-content: flex-end;
             gap: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -107,7 +122,6 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 
         <h2>Edit Data Kartu Keluarga</h2>
 
-        <!-- FORM -->
         <form action="update_kk.php" method="POST">
 
             <input type="hidden" name="id_kk" value="<?= $data['id_kk']; ?>">
@@ -127,46 +141,46 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
                 <textarea name="alamat" class="form-control" rows="3" required><?= $data['alamat']; ?></textarea>
             </div>
 
-            <!-- 🔥 DATA ANGGOTA -->
-            <h5 style="margin-top:30px;">Data Anggota Keluarga</h5>
+            <h5>Data Anggota Keluarga</h5>
 
-            <table class="table">
-                <tr>
-                    <th>NIK</th>
-                    <th>Nama</th>
-                    <th>Hubungan</th>
-                    <th>Aksi</th>
-                </tr>
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <tr>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Hubungan</th>
+                        <th>Aksi</th>
+                    </tr>
 
-                <?php while($a = mysqli_fetch_assoc($anggota)) { ?>
-                <tr>
+                    <?php while($a = mysqli_fetch_assoc($anggota)) { ?>
+                    <tr>
 
-                    <td>
-                        <input type="text" name="nik[]" value="<?= $a['nik']; ?>" class="form-control">
-                    </td>
+                        <td>
+                            <input type="text" name="nik[]" value="<?= $a['nik']; ?>" class="form-control">
+                        </td>
 
-                    <td>
-                        <input type="text" name="nama_anggota[]" value="<?= $a['nama']; ?>" class="form-control">
-                    </td>
+                        <td>
+                            <input type="text" name="nama_anggota[]" value="<?= $a['nama']; ?>" class="form-control">
+                        </td>
 
-                    <td>
-                        <input type="text" name="hubungan[]" value="<?= $a['hubungan']; ?>" class="form-control">
-                    </td>
+                        <td>
+                            <input type="text" name="hubungan[]" value="<?= $a['hubungan']; ?>" class="form-control">
+                        </td>
 
-                    <td>
-                        <a href="hapus_anggota.php?id=<?= $a['id_anggota']; ?>" 
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('Hapus anggota ini?')">
-                           Hapus
-                        </a>
-                    </td>
+                        <td class="text-center">
+                            <a href="hapus_anggota.php?id=<?= $a['id_anggota']; ?>" 
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Hapus anggota ini?')">
+                               Hapus
+                            </a>
+                        </td>
 
-                    <input type="hidden" name="id_anggota[]" value="<?= $a['id_anggota']; ?>">
+                        <input type="hidden" name="id_anggota[]" value="<?= $a['id_anggota']; ?>">
 
-                </tr>
-                <?php } ?>
-
-            </table>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
 
             <div class="btn-group-custom">
                 <button type="submit" class="btn btn-primary">Update</button>

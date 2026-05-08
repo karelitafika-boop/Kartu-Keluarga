@@ -35,27 +35,25 @@ if (isset($_POST['simpan'])) {
     <meta charset="UTF-8">
     <title>Verifikasi KK</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
+            background: linear-gradient(135deg, #e0f2fe, #1e3a8a);
             min-height: 100vh;
         }
 
         .card-custom {
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
-            margin-top: 60px;
-            border-radius: 20px;
-            padding: 30px;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 70px;
+            border-radius: 25px;
+            padding: 35px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
 
         h3 {
@@ -64,47 +62,57 @@ if (isset($_POST['simpan'])) {
         }
 
         .info-box p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .badge-status {
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
+            display: inline-block;
         }
 
         .menunggu { background: #ffc107; color: #000; }
-        .disetujui { background: #28a745; color: #fff; }
-        .ditolak { background: #dc3545; color: #fff; }
+        .disetujui { background: #22c55e; color: #fff; }
+        .ditolak { background: #ef4444; color: #fff; }
+        .menunggu_perubahan { background: #38bdf8; color: #000; }
 
         .form-control, .form-select {
-            border-radius: 10px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
         }
 
         .form-control:focus, .form-select:focus {
-            box-shadow: 0 0 0 0.2rem rgba(255,107,53,0.25);
-            border-color: #ff6b35;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
         }
 
         .btn-success {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            border: none;
             border-radius: 30px;
-            padding: 10px 20px;
+            padding: 10px 25px;
         }
 
         .btn-secondary {
+            background: #64748b;
+            color: white;
             border-radius: 30px;
-            padding: 10px 20px;
+            padding: 10px 25px;
         }
 
         .btn-primary {
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            border: none;
             border-radius: 20px;
         }
 
         .btn-group-custom {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
+            margin-top: 10px;
         }
+
     </style>
 </head>
 
@@ -117,7 +125,7 @@ if (isset($_POST['simpan'])) {
 
         <div class="row">
 
-            <!-- KIRI: DATA -->
+            <!-- KIRI -->
             <div class="col-md-6 info-box">
                 <p><b>No KK:</b><br><?= $d['no_kk']; ?></p>
                 <p><b>Kepala Keluarga:</b><br><?= $d['nama_kepala_keluarga']; ?></p>
@@ -137,12 +145,12 @@ if (isset($_POST['simpan'])) {
                 <p>
                     <b>Status Saat Ini:</b><br>
                     <span class="badge-status <?= $d['status']; ?>">
-                        <?= ucfirst($d['status']); ?>
+                        <?= ucfirst(str_replace('_',' ',$d['status'])); ?>
                     </span>
                 </p>
             </div>
 
-            <!-- KANAN: FORM -->
+            <!-- KANAN -->
             <div class="col-md-6">
                 <form method="POST">
 
