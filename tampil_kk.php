@@ -239,7 +239,7 @@ if ($role == "admin") {
                         <form action="ajukan_perubahan.php" method="POST" class="mt-2">
                             <input type="hidden" name="id_kk" value="<?= $d['id_kk']; ?>">
                             <textarea name="komentar_user" class="form-control mb-2" placeholder="Alasan perubahan..." required></textarea>
-                            <button type="submit" class="btn btn-warning btn-sm"> Keterangan
+                            <button type="submit" class="btn btn-warning btn-sm"> Ajukan Perubahan
                             </button>
                         </form>
                     <?php } ?>
