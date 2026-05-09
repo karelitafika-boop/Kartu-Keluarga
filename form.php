@@ -87,8 +87,7 @@ if ($dataKK) {
     <h3 style="font-weight:800;">Kamu sudah membuat Kartu Keluarga</h3>
     <p>Setiap user hanya bisa membuat 1 KK.</p>
     <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
-    <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
-    <a href="tampil_kk.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-decoration:none;font-weight:700;">Lihat Data KK</a>
+    <a href="dashboard.php" style="display:inline-block;margin-top:20px;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,#2563eb, #06b6d4);color:white;text-decoration:none;font-weight:700;">← Kembali</a>
 </div>
 
 </body>

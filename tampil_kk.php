@@ -134,10 +134,7 @@ if ($role == "admin") {
 
         <a href="login_users.php" class="btn btn-secondary">
             ← Kembali
-        </a>
-        <a href="tampil.kk.php" class="btn btn-secondary">
-            ← Kembali ke user
-        </a>
+</a>
 
     <?php } else { ?>
 
