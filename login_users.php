@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login User - KK Digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -170,32 +170,32 @@
     }
 
     .admin-login {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: linear-gradient(90deg, #0f172a, #1d4ed8);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.35);
-            z-index: 999;
-            transition: 0.3s;
-        }
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(90deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.35);
+      z-index: 999;
+      transition: 0.3s;
+    }
 
-        .admin-login:hover {
-            color: white;
-            background: linear-gradient(90deg, #1e293b, #2563eb);
-            transform: translateY(-3px);
-        }
+    .admin-login:hover {
+      color: white;
+      background: linear-gradient(90deg, #1e293b, #2563eb);
+      transform: translateY(-3px);
+    }
   </style>
+
 </head>
 <body>
 
 <div class="login-card">
-
   <h2>Login User</h2>
   <p>Masuk untuk mengajukan data Kartu Keluarga Digital</p>
 
@@ -226,7 +226,7 @@
     </div>
 
     <button type="submit" class="btn-login">
-      <i class="bi bi-box-arrow-in-right"></i> Login
+      <i class="bi bi-box-arrow-in-right"></i>Login
     </button>
 
   </form>
@@ -234,31 +234,24 @@
   <p class="bottom-text">
     Belum punya akun? <a href="daftar_user.php">Daftar sekarang</a>
   </p>
-
   <p>
     <a href="index.php">← Kembali ke Beranda</a>
   </p>
 
   <div class="features">
     <div class="feature">
-      <i class="bi bi-shield-check"></i>
-      Aman
+      <i class="bi bi-shield-check"></i>Aman
     </div>
     <div class="feature">
-      <i class="bi bi-lightning-charge"></i>
-      Cepat
+      <i class="bi bi-lightning-charge"></i>Cepat
     </div>
     <div class="feature">
-      <i class="bi bi-check-circle"></i>
-      Digital
+      <i class="bi bi-check-circle"></i>Digital
     </div>
   </div>
-
 </div>
 
 <a href="login_db.php" class="admin-login">Admin</a>
-
-
 
 </body>
 </html>

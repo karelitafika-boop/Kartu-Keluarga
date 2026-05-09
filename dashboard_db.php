@@ -13,293 +13,265 @@ if(!isset($_SESSION['username'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family:'Poppins',sans-serif;
-    }
-
-    body{
-        min-height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        overflow:hidden;
-
-        background:
-        radial-gradient(circle at top left, rgba(244,63,94,.35), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(249,115,22,.35), transparent 30%),
-        linear-gradient(135deg,#020617,#0f172a,#111827);
-    }
-
-    .background-blur{
-        position:absolute;
-        width:500px;
-        height:500px;
-        background:linear-gradient(135deg,#ef4444,#f97316);
-        border-radius:50%;
-        filter:blur(140px);
-        opacity:.15;
-        z-index:0;
-    }
-
-    .background-blur.top{
-        top:-150px;
-        left:-150px;
-    }
-
-    .background-blur.bottom{
-        bottom:-150px;
-        right:-150px;
-    }
-
-    .container{
-        position:relative;
-        z-index:1;
-
-        width:480px;
-        padding:40px;
-
-        border-radius:30px;
-
-        background:rgba(15,23,42,.75);
-        backdrop-filter:blur(20px);
-
-        border:1px solid rgba(255,255,255,.12);
-
-        box-shadow:
-        0 25px 70px rgba(0,0,0,.45),
-        inset 0 1px 1px rgba(255,255,255,.08);
-
-        text-align:center;
-
-        animation:fadeUp .8s ease;
-    }
-
-    @keyframes fadeUp{
-        from{
-            opacity:0;
-            transform:translateY(30px);
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
         }
-        to{
-            opacity:1;
-            transform:translateY(0);
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+
+            background:
+            radial-gradient(circle at top left, rgba(244,63,94,.35), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(249,115,22,.35), transparent 30%),
+            linear-gradient(135deg,#020617,#0f172a,#111827);
         }
-    }
 
-    .icon-box{
-        width:90px;
-        height:90px;
+        .background-blur{
+            position:absolute;
+            width:500px;
+            height:500px;
+            background:linear-gradient(135deg,#ef4444,#f97316);
+            border-radius:50%;
+            filter:blur(140px);
+            opacity:.15;
+            z-index:0;
+        }
 
-        margin:auto;
-        margin-bottom:20px;
+        .background-blur.top{
+            top:-150px;
+            left:-150px;
+        }
 
-        border-radius:25px;
+        .background-blur.bottom{
+            bottom:-150px;
+            right:-150px;
+        }
 
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        .container{
+            position:relative;
+            z-index:1;
 
-        background:linear-gradient(135deg,#ef4444,#f97316);
+            width:480px;
+            padding:40px;
 
-        box-shadow:0 15px 35px rgba(249,115,22,.4);
-    }
+            border-radius:30px;
 
-    .icon-box i{
-        font-size:40px;
-        color:white;
-    }
+            background:rgba(15,23,42,.75);
+            backdrop-filter:blur(20px);
 
-    h2{
-        font-size:30px;
-        font-weight:800;
-        color:white;
-        margin-bottom:8px;
-    }
+            border:1px solid rgba(255,255,255,.12);
 
-    h2 span{
-        color:#fb7185;
-    }
+            box-shadow:
+            0 25px 70px rgba(0,0,0,.45),
+            inset 0 1px 1px rgba(255,255,255,.08);
 
-    .subtitle{
-        color:#cbd5e1;
-        font-size:15px;
-        margin-bottom:35px;
-    }
+            text-align:center;
 
-    .menu-title{
-        text-align:left;
-        margin-bottom:15px;
-        font-size:16px;
-        color:#f8fafc;
-        font-weight:600;
-    }
+            animation:fadeUp .8s ease;
+        }
 
-    .menu{
-        display:flex;
-        flex-direction:column;
-        gap:15px;
-    }
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
 
-    .menu a{
-        text-decoration:none;
-        color:white;
+        .icon-box{
+            width:90px;
+            height:90px;
 
-        padding:16px 20px;
+            margin:auto;
+            margin-bottom:20px;
 
-        border-radius:18px;
+            border-radius:25px;
 
-        background:rgba(255,255,255,.06);
+            display:flex;
+            justify-content:center;
+            align-items:center;
 
-        display:flex;
-        align-items:center;
-        gap:15px;
+            background:linear-gradient(135deg,#ef4444,#f97316);
 
-        transition:.3s;
+            box-shadow:0 15px 35px rgba(249,115,22,.4);
+        }
 
-        border:1px solid rgba(255,255,255,.06);
-    }
+        .icon-box i{
+            font-size:40px;
+            color:white;
+        }
 
-    .menu a:hover{
-        transform:translateY(-3px) scale(1.01);
+        h2{
+            font-size:30px;
+            font-weight:800;
+            color:white;
+            margin-bottom:8px;
+        }
 
-        background:linear-gradient(135deg,
-        rgba(239,68,68,.25),
-        rgba(249,115,22,.25));
+        h2 span{
+            color:#fb7185;
+        }
 
-        border:1px solid rgba(255,255,255,.15);
+        .subtitle{
+            color:#cbd5e1;
+            font-size:15px;
+            margin-bottom:35px;
+        }
 
-        box-shadow:0 10px 25px rgba(0,0,0,.25);
-    }
+        .menu-title{
+            text-align:left;
+            margin-bottom:15px;
+            font-size:16px;
+            color:#f8fafc;
+            font-weight:600;
+        }
 
-    .menu i{
-        font-size:22px;
+        .menu{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+        }
 
-        width:45px;
-        height:45px;
+        .menu a{
+            text-decoration:none;
+            color:white;
 
-        border-radius:14px;
+            padding:16px 20px;
 
-        display:flex;
-        justify-content:center;
-        align-items:center;
+            border-radius:18px;
 
-        background:linear-gradient(135deg,#ef4444,#f97316);
+            background:rgba(255,255,255,.06);
 
-        color:white;
-    }
+            display:flex;
+            align-items:center;
+            gap:15px;
 
-    .menu-text{
-        text-align:left;
-    }
+            transition:.3s;
 
-    .menu-text h4{
-        font-size:16px;
-        font-weight:700;
-        margin-bottom:2px;
-    }
+            border:1px solid rgba(255,255,255,.06);
+        }
 
-    .menu-text p{
-        font-size:12px;
-        color:#cbd5e1;
-    }
+        .menu a:hover{
+            transform:translateY(-3px) scale(1.01);
 
-    .logout-btn{
-        margin-top:30px;
-    }
+            background:linear-gradient(135deg,
+            rgba(239,68,68,.25),
+            rgba(249,115,22,.25));
 
-    .logout-btn button{
-        width:100%;
-        padding:15px;
+            border:1px solid rgba(255,255,255,.15);
 
-        border:none;
-        border-radius:18px;
+            box-shadow:0 10px 25px rgba(0,0,0,.25);
+        }
 
-        background:linear-gradient(135deg,#dc2626,#f97316);
+        .menu i{
+            font-size:22px;
 
-        color:white;
-        font-size:15px;
-        font-weight:700;
+            width:45px;
+            height:45px;
 
-        cursor:pointer;
+            border-radius:14px;
 
-        transition:.3s;
+            display:flex;
+            justify-content:center;
+            align-items:center;
 
-        box-shadow:0 12px 25px rgba(220,38,38,.35);
-    }
+            background:linear-gradient(135deg,#ef4444,#f97316);
 
-    .logout-btn button:hover{
-        transform:translateY(-2px);
-        box-shadow:0 18px 35px rgba(220,38,38,.45);
-    }
+            color:white;
+        }
 
-    .footer{
-        margin-top:25px;
-        font-size:12px;
-        color:#94a3b8;
-    }
+        .menu-text{
+            text-align:left;
+        }
 
+        .menu-text h4{
+            font-size:16px;
+            font-weight:700;
+            margin-bottom:2px;
+        }
+
+        .menu-text p{
+            font-size:12px;
+            color:#cbd5e1;
+        }
+
+        .logout-btn{
+            margin-top:30px;
+        }
+
+        .logout-btn button{
+            width:100%;
+            padding:15px;
+
+            border:none;
+            border-radius:18px;
+
+            background:linear-gradient(135deg,#dc2626,#f97316);
+
+            color:white;
+            font-size:15px;
+            font-weight:700;
+
+            cursor:pointer;
+
+            transition:.3s;
+
+            box-shadow:0 12px 25px rgba(220,38,38,.35);
+        }
+
+        .logout-btn button:hover{
+            transform:translateY(-2px);
+            box-shadow:0 18px 35px rgba(220,38,38,.45);
+        }
+
+        .footer{
+            margin-top:25px;
+            font-size:12px;
+            color:#94a3b8;
+        }
     </style>
 
 </head>
 <body>
-
+    
 <div class="background-blur top"></div>
 <div class="background-blur bottom"></div>
-
 <div class="container">
+    <div class="icon-box"><i class="bi bi-shield-lock-fill"></i></div>
+    <h2>Selamat Datang, <span><?php echo $_SESSION['username']; ?></span></h2>
+    <div class="subtitle">Dashboard Admin Sistem Kartu Keluarga</div>
 
-    <div class="icon-box">
-        <i class="bi bi-shield-lock-fill"></i>
-    </div>
-
-    <h2>
-        Selamat Datang,
-        <span><?php echo $_SESSION['username']; ?></span>
-    </h2>
-
-    <div class="subtitle">
-        Dashboard Admin Sistem Kartu Keluarga
-    </div>
-
-    <div class="menu-title">
-        Menu Utama
-    </div>
-
+    <div class="menu-title">Menu Utama</div>
     <div class="menu">
-
         <a href="tampil_kk.php">
-
             <i class="bi bi-people-fill"></i>
-
             <div class="menu-text">
                 <h4>Data Kartu Keluarga</h4>
                 <p>Kelola data KK pengguna</p>
             </div>
-
         </a>
-
     </div>
-
+    
     <form action="logout.php" method="POST" class="logout-btn">
-
-        <button type="submit">
-            <i class="bi bi-box-arrow-right"></i>
-            Logout
-        </button>
-
+        <button type="submit"><i class="bi bi-box-arrow-right"></i>Logout</button>
     </form>
 
-    <div class="footer">
-        © 2026 Sistem Pendataan KK
-    </div>
+    <div class="footer">&copy; 2026 KartuKeluarga Digital, All Rights Reserved.</div>
 
 </div>
 

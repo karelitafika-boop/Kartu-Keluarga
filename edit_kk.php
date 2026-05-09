@@ -29,8 +29,9 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit KK</title>
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -114,16 +115,12 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         }
     </style>
 </head>
-
 <body>
 
 <div class="container">
     <div class="card-form">
-
         <h2>Edit Data Kartu Keluarga</h2>
-
         <form action="update_kk.php" method="POST">
-
             <input type="hidden" name="id_kk" value="<?= $data['id_kk']; ?>">
 
             <div class="mb-3">
@@ -170,15 +167,16 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
                         <td class="text-center">
                             <a href="hapus_anggota.php?id=<?= $a['id_anggota']; ?>" 
                                class="btn btn-danger btn-sm"
-                               onclick="return confirm('Hapus anggota ini?')">
-                               Hapus
+                               onclick="return confirm('Hapus anggota ini?')">Hapus
                             </a>
                         </td>
 
                         <input type="hidden" name="id_anggota[]" value="<?= $a['id_anggota']; ?>">
 
                     </tr>
+
                     <?php } ?>
+
                 </table>
             </div>
 

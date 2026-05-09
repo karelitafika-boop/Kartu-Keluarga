@@ -5,10 +5,8 @@ $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 $role = "user";
 
-// hash password
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-// cek username sudah ada atau belum
 $cek = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username'");
 
 if (mysqli_num_rows($cek) > 0) {
@@ -19,7 +17,6 @@ if (mysqli_num_rows($cek) > 0) {
     exit;
 }
 
-// simpan user
 $simpan = mysqli_query($koneksi, "INSERT INTO users (username, password, role)
 VALUES ('$username', '$password_hash', '$role')");
 

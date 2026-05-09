@@ -12,7 +12,6 @@ $no = $_POST['no_kk'];
 $nama = $_POST['nama_kepala_keluarga'];
 $alamat = $_POST['alamat'];
 
-/* UPDATE DATA KK */
 $query = mysqli_query($koneksi, "UPDATE kartu_keluarga SET
     no_kk='$no',
     nama_kepala_keluarga='$nama',
@@ -20,7 +19,6 @@ $query = mysqli_query($koneksi, "UPDATE kartu_keluarga SET
     WHERE id_kk='$id'
 ");
 
-/* 🔥 TAMBAHAN: UPDATE SEMUA ANGGOTA */
 if (isset($_POST['id_anggota'])) {
 
     $id_anggota = $_POST['id_anggota'];
@@ -37,7 +35,6 @@ if (isset($_POST['id_anggota'])) {
     }
 }
 
-/* REDIRECT */
 if ($query) {
     header("Location: tampil_kk.php");
     exit;

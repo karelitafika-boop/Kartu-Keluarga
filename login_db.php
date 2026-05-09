@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Admin - KK Digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -152,11 +152,11 @@
       margin-bottom: 5px;
     }
   </style>
+
 </head>
 <body>
 
 <div class="login-card">
-
   <h2>Login Admin</h2>
   <p>Akses dashboard pengelolaan data Kartu Keluarga</p>
 
@@ -192,25 +192,19 @@
 
   </form>
 
-  <p>
-    <a href="login_users.php">← Kembali ke Login User</a>
-  </p>
-
+  <p><a href="login_users.php">← Kembali ke Login User</a></p>
+  
   <div class="features">
     <div class="feature">
-      <i class="bi bi-shield-lock"></i>
-      Secure
+      <i class="bi bi-shield-lock"></i>Secure
     </div>
     <div class="feature">
-      <i class="bi bi-speedometer2"></i>
-      Control
+      <i class="bi bi-speedometer2"></i>Control
     </div>
     <div class="feature">
-      <i class="bi bi-gear"></i>
-      Manage
+      <i class="bi bi-gear"></i>Manage
     </div>
   </div>
-
 </div>
 
 </body>

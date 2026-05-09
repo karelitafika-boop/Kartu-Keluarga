@@ -2,6 +2,7 @@ body{
 background: linear-gradient(135deg, #ffffff, #05234b);
 font-family: Arial, Helvetica, sans-serif;
 }
+
 .nav-menu a {
     color:white;
     margin-left:20px;

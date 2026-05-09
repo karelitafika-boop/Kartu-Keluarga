@@ -17,7 +17,9 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartu Keluarga</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -192,32 +194,30 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         }
 
         @media print {
+            body {
+                background: white !important;
+            }
 
-        body {
-            background: white !important;
+            .no-print {
+                display: none !important;
+            }
+
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            .kk-header {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+
+            .kk-header img {
+                width: 100px !important;
+                height: auto !important;
+            }
         }
-
-        .no-print {
-            display: none !important;
-        }
-
-        img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
-
-        .kk-header {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-        }
-
-        .kk-header img {
-            width: 100px !important;
-            height: auto !important;
-        }
-
-    }
         @media (max-width: 768px) {
             .top-bar {
                 padding: 16px 22px;
@@ -266,6 +266,7 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
                 width: 92%;
             }
         }
+
         .print-area {
             max-width: 1150px;
             margin: 10px auto 50px;
@@ -296,25 +297,20 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
             transform: scale(0.96);
         }
     </style>
+
 </head>
 <body>
 
-<div class="top-bar">
-    Sistem Informasi Kartu Keluarga
-</div>
-
+<div class="top-bar">Sistem Informasi Kartu Keluarga</div>
 <div class="kk-card">
-
     <div class="kk-header">
         <div class="logo-left">
             <img src="assets/garuda.png" alt="Logo Garuda">
         </div>
-
         <div class="judul-kk">
             <h1>KARTU KELUARGA</h1>
             <p>DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL</p>
         </div>
-
         <div class="logo-right">
             <img src="assets/peta.png" alt="Peta Indonesia">
         </div>
@@ -361,7 +357,6 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
             <?php } ?>
         </table>
     </div>
-
 </div>
 
 <div class="print-area no-print">
@@ -369,6 +364,7 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         <i class="bi bi-printer"></i> Cetak / Simpan PDF
     </button>
 </div>
+
 <div class="back-area">
     <?php if ($_SESSION['role'] == "admin") { ?>
         <a href="tampil_kk.php" class="btn btn-secondary">← Kembali</a>
@@ -376,5 +372,6 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
         <a href="dashboard.php" class="btn btn-secondary">← Kembali</a>
     <?php } ?>
 </div>
+
 </body>
 </html>
