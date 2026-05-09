@@ -2,10 +2,13 @@
 session_start();
 include "koneksi.php";
 
-if (!isset($_SESSION['id_user'])) {
-    header("Location: login_users.php");
+if (!isset($_SESSION['post_data'])) {
+    header("Location: form.php");
     exit;
 }
+
+$_POST = $_SESSION['post_data'];
+unset($_SESSION['post_data']);
 
 $user_id = $_SESSION['id_user'];
 

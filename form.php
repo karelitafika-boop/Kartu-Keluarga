@@ -2,7 +2,10 @@
 session_start();
 
 if (isset($_POST['step']) && $_POST['step'] == 4) {
-    include "simpan.php";
+
+    $_SESSION['post_data'] = $_POST;
+
+    header("Location: simpan.php");
     exit;
 }
 if(!isset($_POST['step'])){

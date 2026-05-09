@@ -9,6 +9,12 @@ if (!isset($_SESSION['id_user'])) {
 
 $role = $_SESSION['role'];
 
+$modeUser = false;
+
+if (isset($_GET['mode']) && $_GET['mode'] == 'user') {
+    $modeUser = true;
+}
+
 if ($role == "admin") {
     $data = mysqli_query($koneksi, "SELECT * FROM kartu_keluarga");
 } else {
@@ -121,11 +127,40 @@ if ($role == "admin") {
 <div class="container">
 <div class="glass-card">
 
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- tombol kembali -->
     <?php if ($role == "admin") { ?>
-    <a href="login_users.php" class="btn btn-secondary mb-3">← Kembali</a>
+
+        <a href="login_users.php" class="btn btn-secondary">
+            ← Kembali
+        </a>
+        <a href="tampil.kk.php" class="btn btn-secondary">
+            ← Kembali ke user
+        </a>
+
     <?php } else { ?>
-        <a href="dashboard.php" class="btn btn-secondary mb-3">← Kembali</a>
+
+        <a href="dashboard.php" class="btn btn-secondary">
+            ← Kembali
+        </a>
+
     <?php } ?>
+
+    <!-- icon admin tersembunyi -->
+    <?php if ($role != "admin") { ?>
+
+        <a href="login_db.php"
+           class="btn btn-dark"
+           title="Admin">
+
+            <i class="bi bi-person-fill-lock"></i>
+
+        </a>
+
+    <?php } ?>
+
+</div>
 
     <h2>Data Kartu Keluarga</h2>
 
