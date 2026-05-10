@@ -214,156 +214,156 @@ $anggota = mysqli_query($koneksi, "SELECT * FROM anggota_keluarga WHERE id_kk='$
 
     @media print {
 
-    @page {
-        size: A4;
-        margin: 10mm;
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        body {
+            background: white !important;
+            color: black !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .top-bar,
+        .no-print,
+        .back-area,
+        .print-area,
+        .btn-kembali {
+            display: none !important;
+        }
+
+        .kk-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: 2px solid #1e293b !important;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.92),
+                    rgba(255,255,255,0.92)
+                ),
+                url(assets/peta.png);
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 520px;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .kk-header,
+        .info-box,
+        .section-title,
+        .table-wrapper {
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .kk-header {
+            display: grid !important;
+            grid-template-columns: 110px 1fr 130px !important;
+            gap: 10px !important;
+            padding-bottom: 16px !important;
+            margin-bottom: 18px !important;
+            border-bottom: 3px double #1d4ed8 !important;
+        }
+
+        .logo-left img {
+            width: 80px !important;
+        }
+
+        .logo-right img {
+            width: 120px !important;
+        }
+
+        .judul-kk h1 {
+            font-size: 32px !important;
+            letter-spacing: 5px !important;
+            color: #0f172a !important;
+            margin: 0 !important;
+        }
+
+        .judul-kk p {
+            font-size: 11px !important;
+            color: #1e293b !important;
+            margin-top: 5px !important;
+        }
+
+        .info-box {
+            background: rgba(255, 248, 220, 0.90) !important;
+            border: 1.5px solid #ca8a04 !important;
+            box-shadow: none !important;
+            border-radius: 10px !important;
+            padding: 14px 18px !important;
+            margin-bottom: 18px !important;
+        }
+
+        .info-grid {
+            grid-template-columns: 150px 1fr !important;
+            gap: 8px 14px !important;
+            font-size: 12px !important;
+        }
+
+        .label {
+            font-weight: 800 !important;
+            color: #111827 !important;
+        }
+
+        .value {
+            border-bottom: 1px dotted #64748b !important;
+            padding-bottom: 4px !important;
+            color: #111827 !important;
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #0f172a, #1d4ed8) !important;
+            color: white !important;
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            border-radius: 6px 6px 0 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .table-wrapper {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            overflow: visible !important;
+        }
+
+        .table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            background: rgba(255,255,255,0.88) !important;
+        }
+
+        .table th {
+            background: #dbeafe !important;
+            color: #0f172a !important;
+            font-size: 11px !important;
+            padding: 8px !important;
+            border: 1px solid #64748b !important;
+            text-align: center !important;
+        }
+
+        .table td {
+            font-size: 10.5px !important;
+            padding: 8px !important;
+            border: 1px solid #94a3b8 !important;
+            color: #111827 !important;
+            text-align: center !important;
+        }
+
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
     }
-
-    body {
-        background: white !important;
-        color: black !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    .top-bar,
-    .no-print,
-    .back-area,
-    .print-area,
-    .btn-kembali {
-        display: none !important;
-    }
-
-    .kk-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 20px !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        border: 2px solid #1e293b !important;
-
-        background:
-            linear-gradient(
-                rgba(255,255,255,0.92),
-                rgba(255,255,255,0.92)
-            ),
-            url(assets/peta.png);
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 520px;
-        position: relative !important;
-        overflow: hidden !important;
-    }
-
-    .kk-header,
-    .info-box,
-    .section-title,
-    .table-wrapper {
-        position: relative !important;
-        z-index: 2 !important;
-    }
-
-    .kk-header {
-        display: grid !important;
-        grid-template-columns: 110px 1fr 130px !important;
-        gap: 10px !important;
-        padding-bottom: 16px !important;
-        margin-bottom: 18px !important;
-        border-bottom: 3px double #1d4ed8 !important;
-    }
-
-    .logo-left img {
-        width: 80px !important;
-    }
-
-    .logo-right img {
-        width: 120px !important;
-    }
-
-    .judul-kk h1 {
-        font-size: 32px !important;
-        letter-spacing: 5px !important;
-        color: #0f172a !important;
-        margin: 0 !important;
-    }
-
-    .judul-kk p {
-        font-size: 11px !important;
-        color: #1e293b !important;
-        margin-top: 5px !important;
-    }
-
-    .info-box {
-        background: rgba(255, 248, 220, 0.90) !important;
-        border: 1.5px solid #ca8a04 !important;
-        box-shadow: none !important;
-        border-radius: 10px !important;
-        padding: 14px 18px !important;
-        margin-bottom: 18px !important;
-    }
-
-    .info-grid {
-        grid-template-columns: 150px 1fr !important;
-        gap: 8px 14px !important;
-        font-size: 12px !important;
-    }
-
-    .label {
-        font-weight: 800 !important;
-        color: #111827 !important;
-    }
-
-    .value {
-        border-bottom: 1px dotted #64748b !important;
-        padding-bottom: 4px !important;
-        color: #111827 !important;
-    }
-
-    .section-title {
-        background: linear-gradient(90deg, #0f172a, #1d4ed8) !important;
-        color: white !important;
-        padding: 10px 14px !important;
-        font-size: 13px !important;
-        border-radius: 6px 6px 0 0 !important;
-        margin-bottom: 0 !important;
-    }
-
-    .table-wrapper {
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        overflow: visible !important;
-    }
-
-    .table {
-        width: 100% !important;
-        border-collapse: collapse !important;
-        background: rgba(255,255,255,0.88) !important;
-    }
-
-    .table th {
-        background: #dbeafe !important;
-        color: #0f172a !important;
-        font-size: 11px !important;
-        padding: 8px !important;
-        border: 1px solid #64748b !important;
-        text-align: center !important;
-    }
-
-    .table td {
-        font-size: 10.5px !important;
-        padding: 8px !important;
-        border: 1px solid #94a3b8 !important;
-        color: #111827 !important;
-        text-align: center !important;
-    }
-
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-}
 </style>
 
 </head>

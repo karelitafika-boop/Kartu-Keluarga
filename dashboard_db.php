@@ -268,7 +268,7 @@ if(!isset($_SESSION['username'])){
     </div>
     
     <form action="logout.php" method="POST" class="logout-btn">
-        <button type="submit"><i class="bi bi-box-arrow-right"></i>Logout</button>
+        <button type="submit"><i class="bi bi-box-arrow-right"></i> Logout </button>
     </form>
 
     <div class="footer">&copy; 2026 KartuKeluarga Digital, All Rights Reserved.</div>

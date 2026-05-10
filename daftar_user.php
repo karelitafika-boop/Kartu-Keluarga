@@ -179,11 +179,11 @@
     </div>
   </div>
   
-  <button type="submit" class="btn-register"><i class="bi bi-person-plus"></i>Daftar Akun</button>
+  <button type="submit" class="btn-register"><i class="bi bi-person-plus"></i> Daftar Akun </button>
 
 </form>
 
-<p class="bottom-text">Sudah punya akun?<a href="login_users.php">Login sekarang</a></p>
+<p class="bottom-text">Sudah punya akun? <a href="login_users.php">Login sekarang</a></p>
 <p><a href="index.php">Kembali ke Beranda</a></p>
 
 </div>

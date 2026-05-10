@@ -226,7 +226,7 @@
     </div>
 
     <button type="submit" class="btn-login">
-      <i class="bi bi-box-arrow-in-right"></i>Login
+      <i class="bi bi-box-arrow-in-right"></i> Login
     </button>
 
   </form>
